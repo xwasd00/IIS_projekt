@@ -16,7 +16,11 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
+
             <div class="container">
+                <div class="modal-title"><h1>
+                        @yield('title')
+                    </h1></div>
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -27,16 +31,16 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Branding Image -->
+                    <!-- Branding Image --><!--
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
-                    </a>
+                    </a>-->
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @yield('navigation')
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -25,10 +25,19 @@ Route::get('admin', 'AdminController@index')
     ->name('admin');
 
 
-/*************** Asistant routes *************************/
-Route::get('asistant', 'AsistantController@index')
-    ->name('asistant');
 
+/*************** Asistant routes *************************/
+Route::get('asistent', 'AsistentController@index')
+    ->name('asistent');
+
+Route::get('asistent/profile', 'AsistentController@profile')
+    ->name('asistent.profile');
+
+Route::get('asistent/reg', 'AsistentController@reg')
+    ->name('asistent.reg');
+
+Route::get('asistent/test', 'AsistentController@test')
+    ->name('asistent.test');
 
 /*************** Profesor routes *************************/
 Route::get('profesor', 'ProfesorController@index')

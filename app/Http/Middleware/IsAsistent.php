@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class IsAsistant
+class IsAsistent
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class IsAsistant
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->asistant == 1 || auth()->user()->profesor == 1 || auth()->user()->admin == 1){
+        if(auth()->user()->asistent == 1 || auth()->user()->profesor == 1 || auth()->user()->admin == 1){
             return $next($request);
         }
         auth()->logout();

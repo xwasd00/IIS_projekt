@@ -1,12 +1,12 @@
-<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('title'); ?>
+    Testový portál FIT
+<?php $__env->stopSection(); ?>
 
-<div id="menu">
-</div>
-<div id="page-content">
-    <h1 id="welcome-h1">Testový portál FIT</h1>
+
+<?php $__env->startSection('content'); ?>
     <div id="welcome-text">Zde bude úvodní text</div>
     <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('student')); ?>'">Přihlásit se jako student</button>
-    <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('asistant')); ?>'">Přihlásit se jako asistent</button>
+    <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('asistent')); ?>'">Přihlásit se jako asistent</button>
     <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('profesor')); ?>'">Přihlásit se jako Profesor</button>
     <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('admin')); ?>'">Admin</button>
     <?php if(session('error')): ?>
@@ -14,6 +14,5 @@
             <strong><?php echo e(session('error')); ?></strong>
         </span>
     <?php endif; ?>
-</div>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

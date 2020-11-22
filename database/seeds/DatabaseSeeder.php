@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'asistant',
-            'email' => 'asistant@example.com',
+            'name' => 'asistent',
+            'email' => 'asistent@example.com',
             'password' => Hash::make('password'),
-            'asistant' => true,
+            'asistent' => true,
         ]);
 
         DB::table('users')->insert([
