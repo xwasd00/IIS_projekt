@@ -11,16 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-}) -> name('index');
+Route::get('/', function () {return view('index');})
+    -> name('index');
 
-/////////////// Global routes ///////////////
-Route::get('/profile', function () {
-    return view('all/profile');
-}) -> name('profile');
+Route::get('index', function () {return view('index');})
+    -> name('index');
 
-/////////////// Student routes ///////////////
+
+/**               Admin routes                */
+Route::get('admin', 'AdminController@index')
+    ->name('admin');
+
+
+/**              Student routes               */
 Route::get('/student_menu', function () {
    return view( 'student/student_menu');
 }) -> name('student_menu');
@@ -42,3 +45,6 @@ Route::get('asist_menu', function (){
 Route::get('prof_menu', function (){
     return view('profesor/prof_menu');
 }) -> name('prof_menu');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
