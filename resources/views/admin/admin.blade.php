@@ -12,7 +12,7 @@
                             <thead>
                             <th>Username</th>
                             <th>Email</th>
-                            <th>Privileges[admin][profesor][asistent]</th>
+                            <th>Privileges[admin][profesor][asistant]</th>
                             </thead>
                             <tbody>
 
@@ -20,7 +20,9 @@
                                 <tr>
                                     <td>{{$user->name}} </td>
                                     <td>{{$user->email}} </td>
-                                    <td>{{$user->admin}} </td>
+                                    <td>[{{$user->admin}}]
+                                    [{{$user->profesor}}]
+                                    [{{$user->asistant}}]</td>
                                 </tr>
                             @endforeach
 

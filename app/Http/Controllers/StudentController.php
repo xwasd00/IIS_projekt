@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class StudentController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('is_admin');
     }
 
     public function index()
     {
-        $users = User::all();
-        return view('admin.admin',['users' => $users]);
+        return view('student.student');
     }
 }
