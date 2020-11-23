@@ -24,7 +24,7 @@ class AsistentController extends Controller
 
     public function reg()
     {
-        return view('asistent.register');
+        return view('asistent.reg');
     }
 
     public function test()

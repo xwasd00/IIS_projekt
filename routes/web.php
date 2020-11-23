@@ -13,6 +13,7 @@
 
 Auth::routes();
 
+
 Route::get('/', function () {return view('index');})
     -> name('index');
 
@@ -39,23 +40,18 @@ Route::get('asistent/reg', 'AsistentController@reg')
 Route::get('asistent/test', 'AsistentController@test')
     ->name('asistent.test');
 
+
+
 /*************** Profesor routes *************************/
 Route::get('profesor', 'ProfesorController@index')
     ->name('profesor');
+
+
 
 
 /**************** Student routes *************************/
 Route::get('student', 'StudentController@index')
     ->name('student');
 
-/*
-
-Route::get('/test_reg', function (){
-    return view('student/test_reg');
-}) -> name('test_reg');
-
-Route::get('/my_tests', function (){
-    return view('student/my_tests');
-}) -> name('my_tests');
-
- */
+Route::get('student/reg', 'StudentController@reg')
+    ->name('student.reg');

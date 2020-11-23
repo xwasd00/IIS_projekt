@@ -15,4 +15,10 @@ class StudentController extends Controller
     {
         return view('student.student');
     }
+
+
+    public function reg()
+    {
+        return view('student.reg');
+    }
 }

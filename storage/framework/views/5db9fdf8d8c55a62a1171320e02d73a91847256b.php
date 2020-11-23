@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-    Admin page
+    <?php echo $__env->make('admin.title', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('navigation'); ?>
@@ -16,7 +16,7 @@
                             <thead>
                             <th>Username</th>
                             <th>Email</th>
-                            <th>Privileges[admin][profesor][asistant]</th>
+                            <th>Privileges [admin][profesor][asistant]</th>
                             </thead>
                             <tbody>
 
@@ -26,7 +26,7 @@
                                     <td><?php echo e($user->email); ?> </td>
                                     <td>[<?php echo e($user->admin); ?>]
                                     [<?php echo e($user->profesor); ?>]
-                                    [<?php echo e($user->asistant); ?>]</td>
+                                    [<?php echo e($user->asistent); ?>]</td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

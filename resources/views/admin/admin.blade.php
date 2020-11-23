@@ -18,7 +18,7 @@
                             <thead>
                             <th>Username</th>
                             <th>Email</th>
-                            <th>Privileges[admin][profesor][asistant]</th>
+                            <th>Privileges [admin][profesor][asistant]</th>
                             </thead>
                             <tbody>
 
@@ -28,7 +28,7 @@
                                     <td>{{$user->email}} </td>
                                     <td>[{{$user->admin}}]
                                     [{{$user->profesor}}]
-                                    [{{$user->asistant}}]</td>
+                                    [{{$user->asistent}}]</td>
                                 </tr>
                             @endforeach
 
