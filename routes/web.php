@@ -25,6 +25,8 @@ Route::get('index', function () {return view('index');})
 Route::get('admin', 'AdminController@index')
     ->name('admin');
 
+Route::delete('user/delete/{id}', 'AdminController@delete');
+
 
 
 /*************** Asistant routes *************************/

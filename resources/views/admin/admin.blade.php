@@ -30,6 +30,15 @@
                                     <td>[{{$user->admin}}]
                                     [{{$user->profesor}}]
                                     [{{$user->asistent}}]</td>
+                                    <td>
+                                        @if(!$user->admin)
+                                        <form action="{{url('user/delete', [$user->id])}}" method="POST">
+                                            {{method_field('DELETE')}}
+                                            {{ csrf_field() }}
+                                            <input type="submit" class="btn btn-danger" value="Delete"/>
+                                        </form>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
 

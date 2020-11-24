@@ -18,4 +18,10 @@ class AdminController extends Controller
         $users = User::all();
         return view('admin.admin',['users' => $users]);
     }
+
+    public function delete($id)
+    {
+        User::destroy($id);
+        return redirect('admin');
+    }
 }

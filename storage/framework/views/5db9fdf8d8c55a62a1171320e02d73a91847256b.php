@@ -28,6 +28,17 @@
                                     <td>[<?php echo e($user->admin); ?>]
                                     [<?php echo e($user->profesor); ?>]
                                     [<?php echo e($user->asistent); ?>]</td>
+                                    <td>
+                                        <?php if(!$user->admin): ?>
+                                        <form action="<?php echo e(url('user/delete', [$user->id])); ?>" method="POST">
+                                            <?php echo e(method_field('DELETE')); ?>
+
+                                            <?php echo e(csrf_field()); ?>
+
+                                            <input type="submit" class="btn btn-danger" value="Delete"/>
+                                        </form>
+                                        <?php endif; ?>
+                                    </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
