@@ -38,6 +38,24 @@
                             </div>
                         </div>
 
+                            <div class="form-group<?php echo e($errors->has('role') ? ' has-error' : ''); ?>">
+                                <label for="role" class="col-md-4 control-label">Role</label>
+
+                                <div class="col-md-6">
+                                    <select id="role" name="role">
+                                        <option value="student">Student</option>
+                                        <option value="asistent">Asistent</option>
+                                        <option value="profesor">Profesor</option>
+                                    </select>
+
+                                    <?php if($errors->has('role')): ?>
+                                        <span class="help-block">
+                                        <strong><?php echo e($errors->first('role')); ?></strong>
+                                    </span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
                         <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

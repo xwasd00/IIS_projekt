@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -36,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('is_admin');
     }
 
     /**
@@ -62,10 +64,43 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        switch($data['role']){
+            case 'profesor':
+                $user = User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    'profesor' => true,
+                ]);
+                break;
+            case 'asistent':
+                $user = User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    'asistent' => true,
+                ]);
+                break;
+            default:
+                $user = User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                ]);
+                break;
+        }
+        return $user;
+    }
+
+    protected function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        //dd($this->create($request->all()));
+        event(new Registered($user = $this->create($request->all())));
+
+
+        return $this->registered($request, $user)
+            ?: redirect('admin');
     }
 }
