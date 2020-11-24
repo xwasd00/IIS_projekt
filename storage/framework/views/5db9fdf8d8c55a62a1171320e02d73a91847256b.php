@@ -12,7 +12,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <a href="<?php echo e(route('register')); ?>">add</a>
+                        <button class="btn btn-primary" onclick="window.location='<?php echo e(route('register')); ?>'">Přidat</button>
                         <table class="table table-hover">
                             <thead>
                             <th>Username</th>

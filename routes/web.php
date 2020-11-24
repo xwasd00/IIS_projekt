@@ -21,13 +21,14 @@ Route::get('index', function () {return view('index');})
     -> name('index');
 
 
-/**************** Admin routes ***************************/
-Route::get('admin', 'AdminController@index')
-    ->name('admin');
-
-Route::delete('user/delete/{id}', 'AdminController@delete');
 
 
+/**************** Student routes *************************/
+Route::get('student', 'StudentController@index')
+    ->name('student');
+
+Route::get('student/reg', 'StudentController@reg')
+    ->name('student.reg');
 
 /*************** Asistant routes *************************/
 Route::get('asistent', 'AsistentController@index')
@@ -48,12 +49,12 @@ Route::get('asistent/test', 'AsistentController@test')
 Route::get('profesor', 'ProfesorController@index')
     ->name('profesor');
 
+Route::get('profesor/show/{id}', 'ProfesorController@showTest');
 
 
+/**************** Admin routes ***************************/
+Route::get('admin', 'AdminController@index')
+    ->name('admin');
 
-/**************** Student routes *************************/
-Route::get('student', 'StudentController@index')
-    ->name('student');
+Route::delete('user/delete/{id}', 'AdminController@delete');
 
-Route::get('student/reg', 'StudentController@reg')
-    ->name('student.reg');

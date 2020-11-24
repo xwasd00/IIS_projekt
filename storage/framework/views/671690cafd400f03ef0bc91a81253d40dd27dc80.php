@@ -5,10 +5,10 @@
 
 <?php $__env->startSection('content'); ?>
     <div id="welcome-text">Zde bude úvodní text</div>
-    <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('student')); ?>'">Přihlásit se jako student</button>
-    <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('asistent')); ?>'">Přihlásit se jako asistent</button>
-    <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('profesor')); ?>'">Přihlásit se jako Profesor</button>
-    <button class="welcome-button" style="cursor: pointer" onclick="window.location='<?php echo e(route('admin')); ?>'">Admin</button>
+    <button class="btn btn-primary" onclick="window.location='<?php echo e(route('student')); ?>'">Přihlásit se jako student</button>
+    <button class="btn btn-primary" onclick="window.location='<?php echo e(route('asistent')); ?>'">Přihlásit se jako asistent</button>
+    <button class="btn btn-primary" onclick="window.location='<?php echo e(route('profesor')); ?>'">Přihlásit se jako Profesor</button>
+    <button class="btn btn-primary" onclick="window.location='<?php echo e(route('admin')); ?>'">Admin</button>
     <?php if(session('error')): ?>
         <span class="help-block">
             <strong><?php echo e(session('error')); ?></strong>
