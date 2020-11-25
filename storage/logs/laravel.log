@@ -2348,3 +2348,87 @@ Did you mean one of these?
 #55 /home/michal/Dokumenty/Projekty/IIS_projekt/server.php(21): require_once('/home/michal/Do...')
 #56 {main}
 "} 
+[2020-11-25 14:19:07] local.ERROR: Command "ide_helper" is not defined.
+
+Did you mean one of these?
+    ide-helper:eloquent
+    ide-helper:generate
+    ide-helper:meta
+    ide-helper:models {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"ide_helper\" is not defined.
+
+Did you mean one of these?
+    ide-helper:eloquent
+    ide-helper:generate
+    ide-helper:meta
+    ide-helper:models at /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php:651)
+[stacktrace]
+#0 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(236): Symfony\\Component\\Console\\Application->find()
+#1 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(148): Symfony\\Component\\Console\\Application->doRun()
+#2 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Console/Application.php(88): Symfony\\Component\\Console\\Application->run()
+#3 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run()
+#4 /home/michal/Dokumenty/Projekty/IIS_projekt/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
+[2020-11-25 14:19:11] local.ERROR: Command "ide-helper" is not defined.
+
+Did you mean one of these?
+    ide-helper:eloquent
+    ide-helper:generate
+    ide-helper:meta
+    ide-helper:models {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"ide-helper\" is not defined.
+
+Did you mean one of these?
+    ide-helper:eloquent
+    ide-helper:generate
+    ide-helper:meta
+    ide-helper:models at /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php:651)
+[stacktrace]
+#0 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(236): Symfony\\Component\\Console\\Application->find()
+#1 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(148): Symfony\\Component\\Console\\Application->doRun()
+#2 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Console/Application.php(88): Symfony\\Component\\Console\\Application->run()
+#3 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run()
+#4 /home/michal/Dokumenty/Projekty/IIS_projekt/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
+[2020-11-25 14:19:14] local.ERROR: Command "ide" is not defined.
+
+Did you mean one of these?
+    ide-helper:eloquent
+    ide-helper:generate
+    ide-helper:meta
+    ide-helper:models
+    make:provider {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"ide\" is not defined.
+
+Did you mean one of these?
+    ide-helper:eloquent
+    ide-helper:generate
+    ide-helper:meta
+    ide-helper:models
+    make:provider at /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php:651)
+[stacktrace]
+#0 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(236): Symfony\\Component\\Console\\Application->find()
+#1 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(148): Symfony\\Component\\Console\\Application->doRun()
+#2 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Console/Application.php(88): Symfony\\Component\\Console\\Application->run()
+#3 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run()
+#4 /home/michal/Dokumenty/Projekty/IIS_projekt/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
+[2020-11-25 14:19:34] local.ERROR: Command "ide-helper:" is ambiguous.
+Did you mean one of these?
+    ide-helper:generate Generate a new IDE Helper file.
+    ide-helper:models   Generate autocompletion for models
+    ide-helper:meta     Generate metadata for PhpStorm
+    ide-helper:eloquent Add \Eloquent helper to \Eloquent\Model. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"ide-helper:\" is ambiguous.
+Did you mean one of these?
+    ide-helper:generate Generate a new IDE Helper file.
+    ide-helper:models   Generate autocompletion for models
+    ide-helper:meta     Generate metadata for PhpStorm
+    ide-helper:eloquent Add \\Eloquent helper to \\Eloquent\\Model. at /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php:689)
+[stacktrace]
+#0 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(236): Symfony\\Component\\Console\\Application->find()
+#1 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(148): Symfony\\Component\\Console\\Application->doRun()
+#2 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Console/Application.php(88): Symfony\\Component\\Console\\Application->run()
+#3 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run()
+#4 /home/michal/Dokumenty/Projekty/IIS_projekt/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
