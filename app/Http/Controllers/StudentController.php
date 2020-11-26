@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class StudentController extends Controller
 {
@@ -21,4 +22,13 @@ class StudentController extends Controller
     {
         return view('student.reg');
     }
+
+
+    public function profile()
+    {
+       $users = User::where('name', 'student')->get();
+       return view('student.profile', ['users' => $users]);
+    }
+
+
 }

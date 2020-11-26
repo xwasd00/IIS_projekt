@@ -30,6 +30,9 @@ Route::get('student', 'StudentController@index')
 Route::get('student/reg', 'StudentController@reg')
     ->name('student.reg');
 
+Route::get('student/profile', 'StudentController@profile')
+    ->name('student.profile');
+
 /*************** Asistant routes *************************/
 Route::get('asistent', 'AsistentController@index')
     ->name('asistent');

@@ -3,6 +3,6 @@
     <li class="navbar-btn"><a href="{{route('student.reg')}}">Registrace testů</a></li>
     <li class="navbar-btn"><a href="">Moje testy</a></li>
     <li class="navbar-btn"><a href="">Hodnocení testů</a></li>
-    <li class="navbar-btn"><a href="">Profil</a></li>
+    <li class="navbar-btn"><a href="{{route('student.profile')}}">Profil</a></li>
 
 </ul>
