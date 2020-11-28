@@ -471,6 +471,7 @@ class ComposerStaticInit964b23c1b02d87095498da34da71acc2
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Question' => __DIR__ . '/../..' . '/app/Question.php',
         'App\\Test' => __DIR__ . '/../..' . '/app/Test.php',
+        'App\\TestInstance' => __DIR__ . '/../..' . '/app/TestInstance.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Barryvdh\\LaravelIdeHelper\\Alias' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Alias.php',
         'Barryvdh\\LaravelIdeHelper\\Console\\EloquentCommand' => __DIR__ . '/..' . '/barryvdh/laravel-ide-helper/src/Console/EloquentCommand.php',

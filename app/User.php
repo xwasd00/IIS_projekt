@@ -56,4 +56,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function test_instances(){
+        return $this->hasMany(TestInstance::class);
+    }
 }

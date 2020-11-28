@@ -34,6 +34,7 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Question' => $baseDir . '/app/Question.php',
     'App\\Test' => $baseDir . '/app/Test.php',
+    'App\\TestInstance' => $baseDir . '/app/TestInstance.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Barryvdh\\LaravelIdeHelper\\Alias' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Alias.php',
     'Barryvdh\\LaravelIdeHelper\\Console\\EloquentCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Console/EloquentCommand.php',

@@ -33,6 +33,11 @@ Route::get('student/reg', 'StudentController@reg')
 Route::get('student/profile', 'StudentController@profile')
     ->name('student.profile');
 
+Route::post('student/reg', 'StudentController@register');
+
+Route::get('student/eval', 'StudentController@eval')
+    ->name('student.eval');
+
 /*************** Asistant routes *************************/
 Route::get('asistent', 'AsistentController@index')
     ->name('asistent');

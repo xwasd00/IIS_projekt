@@ -22,6 +22,8 @@ class AdminController extends Controller
     public function delete($id)
     {
         $user = User::findOrFail($id);
+
+        // nelze odstranit administrátora
         if($user->admin){
             return redirect('admin');
         }

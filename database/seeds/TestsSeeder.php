@@ -14,8 +14,8 @@ class TestsSeeder extends Seeder
         DB::table('tests')->insert([
             'name' => 'test1',
             'configuration' => '',
-            'start' => date_create("2013-03-15 12:00:00"),
-            'end' => date_create("2013-03-15 13:00:00"),
+            'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 6, 12, 2021))),
+            'end' => date_create(date("Y-m-d H:i:s", mktime(13, 0, 0, 6, 12, 2021))),
         ]);
 
         DB::table('questions')->insert([
