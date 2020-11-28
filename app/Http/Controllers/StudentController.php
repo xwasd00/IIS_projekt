@@ -26,8 +26,10 @@ class StudentController extends Controller
 
     public function profile()
     {
-       $users = User::where('name', 'student')->get();
-       return view('student.profile', ['users' => $users]);
+        $user = User::findOrFail(auth()->user()->id);
+        //dd($users);
+        //$users = User::where('name', 'student')->get();
+        return view('student.profile', ['user' => $user]);
     }
 
 
