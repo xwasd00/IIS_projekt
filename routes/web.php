@@ -54,6 +54,11 @@ Route::get('profesor', 'ProfesorController@index')
 
 Route::get('profesor/show/{id}', 'ProfesorController@showTest');
 
+Route::get('profesor/addtest', 'ProfesorController@addtest')
+    ->name('profesor.addtest');
+
+Route::post('profesor/addtest', 'TestController@add')
+    ->name('profesor.add');
 
 /**************** Admin routes ***************************/
 Route::get('admin', 'AdminController@index')

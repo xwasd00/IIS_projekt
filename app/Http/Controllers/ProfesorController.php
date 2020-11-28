@@ -29,4 +29,9 @@ class ProfesorController extends Controller
     {
         return view('profesor.create');
     }
+
+    public function addTest()
+    {
+        return view('profesor.addtest');
+    }
 }
