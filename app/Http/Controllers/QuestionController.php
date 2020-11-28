@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Question;
-use App\Answers;
+use App\Answer;
 use App\Test;
 use Illuminate\Http\Request;
 
@@ -24,7 +24,7 @@ class QuestionController extends Controller
         return $qst;
     }
 
-    public function delete($id)
+    public function deleteQ($id)
     {
         $qst = Question::findOrFail($id);
 
@@ -32,6 +32,15 @@ class QuestionController extends Controller
         Question::destroy($id);
 
         return view('profesor.show', ['test' => $test]);
+    }
+
+    public function deleteA($id)
+    {
+        $ans = Answer::findOrFail($id);
+        $qst = Question::findOrFail($ans->question_id);
+        Answer::destroy($id);
+
+        return view('profesor.modifyqst', ['qst' => $qst]);
     }
 
     public function add($id ,Request $request)

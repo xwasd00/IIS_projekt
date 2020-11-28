@@ -34,7 +34,8 @@ class TestController extends Controller
 
         $this->create($test);
 
-        return view('profesor');
+        $tests = Test::all();
+        return view('profesor.profesor', ['tests' => $tests]);
     }
 
 }

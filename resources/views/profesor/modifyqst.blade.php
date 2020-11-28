@@ -66,10 +66,33 @@
                             </form>
                         </div>
                         <div>{{--Vkládání otázek k testům--}}
-                            <h3>Odpovědi</h3>
-                            @foreach($qst->answers as $answer)
-                                {{$loop->iteration}} {{$answer->answer}}<br>
-                            @endforeach
+                        <h3>Odpovědi</h3>
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Číslo odpovědi</th>
+                                <th>Odpověď</th>
+                                <th>
+                                    <button class="btn btn-primary" onclick="window.location='{{ route('profesor.addans', [$qst])}}'">Přidat odpověď</button>
+                                </th>
+                            </thead>
+                            <tbody>
+                                @foreach($qst->answers as $answer)
+                                    <tr>
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$answer->answer}}</td>
+                                            <td>
+                                                <form action="{{ route('question.deleteA', [$answer->id])}}" method="POST">
+                                                    {{method_field('DELETE')}}
+                                                    {{ csrf_field() }}
+                                                    <input type="submit" class="btn btn-danger" value="Delete"/>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                         </div>
                         <button class="btn btn-warning" onclick="window.location='{{ route('profesor.show', [$qst->test_id])}}'">Zpět</button>
                     </div>

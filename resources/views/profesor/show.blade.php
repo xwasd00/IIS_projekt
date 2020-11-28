@@ -46,7 +46,7 @@
                                 <button class="btn btn-warning" onclick="window.location='{{ route('profesor.modifyqst', [$question->id])}}'">Upravit otázku</button>
                             </td>
                             <td>
-                                <form action="{{ route('question.delete', [$question->id])}}" method="POST">
+                                <form action="{{ route('question.deleteQ', [$question->id])}}" method="POST">
                                     {{method_field('DELETE')}}
                                     {{ csrf_field() }}
                                     <input type="submit" class="btn btn-danger" value="Delete"/>

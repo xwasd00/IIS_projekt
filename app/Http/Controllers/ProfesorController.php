@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Test;
 use App\Question;
+use App\Answer;
 use Illuminate\Http\Request;
 
 class ProfesorController extends Controller
@@ -36,6 +37,12 @@ class ProfesorController extends Controller
     {
         $qst = Question::findOrFail($qstid);
         return view('profesor.modifyqst', ['qst' => $qst]);
+    }
+
+    public function addans($qstid)
+    {
+        $qst = Question::findOrFail($qstid);
+        return view('profesor.addans', [ 'qst' => $qst]);
     }
 
     public function createView()
