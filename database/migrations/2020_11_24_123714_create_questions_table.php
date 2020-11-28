@@ -22,6 +22,7 @@ class CreateQuestionsTable extends Migration
             $table->integer('scoreMax');
             //$table->foreign('testName')->references('name')->on('tests');
             $table->index('test_id');
+            $table->timestamps();
         });
     }
 

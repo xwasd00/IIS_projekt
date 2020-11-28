@@ -36,4 +36,8 @@ class Question extends Model
     public function answers(){
         return $this->hasMany(Answer::class);
     }
+
+    protected $fillable = [
+        'test_id', 'name', 'task', 'scoreMax',
+    ];
 }

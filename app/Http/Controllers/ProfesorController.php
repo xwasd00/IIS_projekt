@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Test;
+use App\Question;
 use Illuminate\Http\Request;
 
 class ProfesorController extends Controller
@@ -23,6 +24,18 @@ class ProfesorController extends Controller
     {
         $test = Test::findOrFail($testid);
         return view('profesor.show', ['test' => $test]);
+    }
+
+    public function addqst($testid)
+    {
+        $test = Test::findOrFail($testid);
+        return view('profesor.addqst', ['test' => $test]);
+    }
+
+    public function modifyqst($qstid)
+    {
+        $qst = Question::findOrFail($qstid);
+        return view('profesor.modifyqst', ['qst' => $qst]);
     }
 
     public function createView()

@@ -30,7 +30,7 @@
                                     <td>{{$test->start}} </td>
                                     <td>{{(strtotime($test->end) - strtotime($test->start))/60}} minut </td>
                                     <td>
-                                        <button class="btn btn-primary" onclick="window.location='{{ url('profesor/show', [$test->id]) }}'"> Detail </button>
+                                        <button class="btn btn-primary" onclick="window.location='{{ route('profesor.show', [$test->id]) }}'"> Detail </button>
                                     </td>
                                 </tr>
                             @endforeach
