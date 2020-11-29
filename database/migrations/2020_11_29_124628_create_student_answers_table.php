@@ -18,6 +18,7 @@ class CreateStudentAnswersTable extends Migration
             $table->unsignedBigInteger('test_instance_id');
             $table->unsignedBigInteger('question_id');
             $table->longText('answer')->nullable();
+            $table->integer('score')->default(0);
             $table->timestamps();
 
             $table->index('test_instance_id');

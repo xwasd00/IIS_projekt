@@ -17,6 +17,7 @@ class CreateTestInstancesTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('test_id');
             $table->unsignedBigInteger('user_id');
+            $table->boolean('approved')->default(false);
             $table->boolean('evaluated')->default(false);
             $table->integer('score')->default(0);
             $table->timestamps();

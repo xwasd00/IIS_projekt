@@ -28,10 +28,10 @@ Route::get('student', 'StudentController@index')
 Route::get('student/reg', 'StudentController@reg')
     ->name('student.reg');
 
+Route::post('student/reg', 'StudentController@register');
+
 Route::get('student/profile', 'StudentController@profile')
     ->name('student.profile');
-
-Route::post('student/reg', 'StudentController@register');
 
 Route::get('student/eval', 'StudentController@eval')
     ->name('student.eval');
@@ -45,9 +45,16 @@ Route::post('student/testfill/{id}', 'StudentController@testfill');
 Route::get('asistent', 'AsistentController@index')
     ->name('asistent');
 
+Route::get('asistent/reg', function () {return redirect('asistent');});
+
+Route::post('asistent/reg', 'AsistentController@reg');
+
 Route::get('asistent/eval', 'AsistentController@eval')
     ->name('asistent.eval');
 
+Route::get('asistent/eval/{id}', 'AsistentController@evaluate');
+
+Route::post('asistent/eval/{id}', 'AsistentController@evaluatesave');
 
 
 /*************** Profesor routes *************************/

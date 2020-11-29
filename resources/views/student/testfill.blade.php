@@ -17,11 +17,11 @@
 
                         @foreach($questions as $question)
                         <div class="form-group">
-                            <label for="questions[{{$question->id}}]" class="col-md-2">{{$question->name}}</label><br>
+                            <p class="h4">{{$question->name}}</p>
                             <p>{{$question->task}}</p>
                             <div class="col-md-8">
                                 <input id="questions[{{$question->id}}]" type="text" class="form-control" name="questions[{{$question->id}}]"
-                                       value="@if(isset($question->id, $answers)){{$answers[$question->id]}}@endif">
+                                       value="{{isset($answers[$question->id]) ? $answers[$question->id] : '' }}">
 
                             </div>
                         </div>
@@ -35,19 +35,6 @@
                             </div>
                         </div>
                     </form>
-
-
-
-                    @foreach($test->questions as $question)
-                        <h4>{{$question->name}}</h4><br>
-                        {{$question->task}}<br>
-                        @if(sizeof($question->answers) < 2)
-                            otevrena odpoved
-                        @else
-                            uzavrena odpoved
-                        @endif
-                        <br>
-                    @endforeach
                 </div>
             </div>
         </div>

@@ -21,8 +21,8 @@
                                     <tr>
                                         <td><?php echo e($test->test->name); ?> </td>
                                         <td>
-                                        <?php if($test->test->evaluated): ?>
-                                            <?php echo e($test->test->score); ?>
+                                        <?php if($test->evaluated): ?>
+                                            <?php echo e($test->score); ?>
 
                                         <?php else: ?>
                                                 <span>Nezadáno</span>

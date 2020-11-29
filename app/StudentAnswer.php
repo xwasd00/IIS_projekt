@@ -10,7 +10,7 @@ class StudentAnswer extends Model
     use Notifiable;
 
     protected $fillable = [
-        'question_id','answer','test_instance_id',
+        'question_id','answer','test_instance_id', 'score',
     ];
 
     public function test_instance(){

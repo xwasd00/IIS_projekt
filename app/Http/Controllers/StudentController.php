@@ -30,13 +30,13 @@ class StudentController extends Controller
     public function reg()
     {
         //nalezení dostupných testů
-        $tests = Test::All()->where('start', ">", date("Y-m-d H:i:s"));
+        $tests = Test::All()->where('end', ">", date("Y-m-d H:i:s"));
         $instances = auth()->user()->test_instances;
 
         // přidání atributu 'registered', v případě, že je student zaregistrován
         foreach ($tests as $test){
             $test->append('registred');
-            if($instances->find($test->id)){
+            if($instances->contains('test_id', $test->id)){
                 $test->registred=true;
             }
             else{
@@ -59,7 +59,7 @@ class StudentController extends Controller
 
             // kontrola správného id testu
             $testid = $request->input('test_id');
-            Test::findOrFail($testid);
+            $test = Test::findOrFail($testid);
 
             // kontrola, zda je již zaregistrován
             $instance = auth()->user()->test_instances->contains('test_id', $testid);
@@ -68,10 +68,22 @@ class StudentController extends Controller
             }
 
             // registrace studenta
-            DB::table('test_instances')->insert([
+            $testinstance = TestInstance::create([
                 'test_id' => $testid,
                 'user_id' => auth()->user()->id,
             ]);
+            $testinstance->save();
+
+            foreach ($test->questions as $question){
+                $student_answer = StudentAnswer::create([
+                    'test_instance_id' => $testinstance->id,
+                    'question_id' => $question->id,
+                    'answer' => "",
+                ]);
+                $student_answer->save();
+            }
+
+
             return redirect('student/reg');
         }
         else{
@@ -91,23 +103,34 @@ class StudentController extends Controller
     {
         //kontrola správného testu
         $test = Test::findOrFail($testid);
+
         $hasinstance = auth()->user()->test_instances->contains('test_id', $testid);
         if( !$hasinstance ){// studentovi není přiřazen tento test
             return redirect('student');
         }
 
 
-        /*
-        // kontrola přístupnosti testu
-        if($test->start > date("Y-m-d H:i:s") || $test->end < date("Y-m-d H:i:s")){
-            return redirect('student');
-        }*/
 
-        $student_answers = auth()->user()->test_instances->where('test_id', '=', $testid)->first()->student_answers;
+        // kontrola přístupnosti testu
+        if($test->start > date("Y-m-d H:i:s")){
+            return redirect('student');
+        }
+        if($test->end < date("Y-m-d H:i:s")){
+            return redirect('student');
+        }
+
+
+        $testinstance = auth()->user()->test_instances->where('test_id', '=', $testid)->first();
+        if(!$testinstance->approved){
+            return redirect('student');
+        }
+
+        $student_answers = $testinstance->student_answers;
         $answers = null;
         foreach ($student_answers as $answer){
             $answers[$answer->question_id] = $answer->answer;
         }
+
 
 
         return view('student.testfill', ['test' => $test, 'questions' => $test->questions, 'answers' => $answers]);
@@ -123,13 +146,19 @@ class StudentController extends Controller
         if( !$hasinstance ){// studentovi není přiřazen tento test
             return redirect('student');
         }
-/*
+
         // kontrola přístupnosti testu
-        if($test->start > date("Y-m-d H:i:s") || $test->end < date("Y-m-d H:i:s")){
+        if($test->start > date("Y-m-d H:i:s")){
             return redirect('student');
-        }*/
+        }
+        if($test->end < date("Y-m-d H:i:s")){
+            return redirect('student');
+        }
 
-
+        $testinstance = auth()->user()->test_instances->where('test_id', '=', $testid)->first();
+        if(!$testinstance->approved){
+            return redirect('student');
+        }
 
         //získání otázek (a odpovědí k otázkám)
         $questions = ($request->input('questions'));
@@ -137,22 +166,13 @@ class StudentController extends Controller
             return redirect('student');
         }
 
-        $testinstance = auth()->user()->test_instances->where('test_id', '=', $testid)->first();
 
         foreach ($questions as $question => $answer){
-            Question::findOrFail($question);
 
             $student_answer = $testinstance->student_answers->where('question_id', '=', $question)->first();
 
             if($student_answer === null){
-                if($answer === null){
-                    $answer = "";
-                }
-                $student_answer = StudentAnswer::create([
-                    'test_instance_id' => $testinstance->id,
-                    'question_id' => $question,
-                    'answer' => $answer,
-                ]);
+                return $this->testshow($testid);
             }
             else {
                 $student_answer->answer = $answer;
@@ -160,6 +180,7 @@ class StudentController extends Controller
             $student_answer->save();
 
         }
+
 
         return $this->testshow($testid);
     }

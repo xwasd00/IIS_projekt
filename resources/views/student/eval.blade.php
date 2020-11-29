@@ -23,8 +23,8 @@
                                     <tr>
                                         <td>{{$test->test->name}} </td>
                                         <td>
-                                        @if($test->test->evaluated)
-                                            {{$test->test->score}}
+                                        @if($test->evaluated)
+                                            {{$test->score}}
                                         @else
                                                 <span>Nezadáno</span>
                                         @endif
