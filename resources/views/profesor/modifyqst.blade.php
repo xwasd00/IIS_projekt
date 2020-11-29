@@ -19,20 +19,21 @@
                             <h3>Informace</h3>
                         </div>
                         <div> {{--Úprava testů--}}
-                            <form class="form-horizontal" method="POST" action="">
+                            <form class="form-horizontal" method="POST" action="{{ route('profesor.modifyqstDB', [$qst->id]) }}">
                                 <table class="table table-hover">
                                     {{ csrf_field() }}
                                     <thead>
                                         <th></th>
                                         <th>Aktuální</th>
                                         <th>Nové</th>
+                                        <th></th>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>Název otázky</td>
                                             <td>{{$qst->name}}</td>
                                             <td>
-                                                <div class="form-group">
+                                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                                     <div class="col-md-6">
                                                         <input id="name" type="text" class="form-control" name="name" value="{{ old('name')}}">
                                                     </div>
@@ -43,7 +44,7 @@
                                             <td>Znění otázky</td>
                                             <td>{{$qst->task}}</td>
                                             <td>
-                                                <div class="form-group">
+                                                <div class="form-group{{ $errors->has('task') ? ' has-error' : '' }}">
                                                     <div class="col-md-6">
                                                         <input id="name" type="text" class="form-control" name="task" value="{{ old('name')}}">
                                                     </div>
@@ -54,11 +55,19 @@
                                             <td>Moximální počet bodů</td>
                                             <td>{{$qst->scoreMax}}</td>
                                             <td>
-                                                <div class="form-group">
+                                                <div class="form-group{{ $errors->has('scoreMax') ? ' has-error' : '' }}">
                                                     <div class="col-md-6">
                                                         <input id="name" type="number" class="form-control" name="scoreMax" value="{{ old('name')}}" min="1" max="100">
                                                     </div>
                                                 </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                              <button type="submit" class="btn btn-primary">Add</button>
                                             </td>
                                         </tr>
                                     </tbody>

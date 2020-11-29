@@ -26,6 +26,13 @@ class TestController extends Controller
 
     public function add(request $request)
     {
+        $data = request()->validate([
+            'name' => 'required',
+            'configuration' => 'required',
+            'start' => 'required',
+            'end' => 'required'
+        ]);
+
         $test = new Test;
         $test->name = $request->name;
         $test->configuration = $request->configuration;

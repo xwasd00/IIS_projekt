@@ -23,6 +23,10 @@ class AnswerController extends Controller
 
     public function add($qst_id, Request $request)
     {
+        $data = request()->validate([
+            'answer' => 'required'
+        ]);
+
         $ans = new Answer;
         $ans->question_id = $qst_id;
         $ans->answer = $request->answer;

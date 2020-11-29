@@ -70,6 +70,9 @@ Route::get('profesor/addans/{id}', 'ProfesorController@addans', '{id}')
 Route::post('profesor/addtest', 'TestController@add')
     ->name('profesor.add');
 
+Route::post('profesor/modifyqst/{id}', 'QuestionController@modify', '{id}')
+    ->name('profesor.modifyqstDB');
+
 Route::post('profesor/addqst/{id}', 'QuestionController@add', '{id}')
     ->name('profesor.addToDB');
 

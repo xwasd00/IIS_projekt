@@ -22,9 +22,14 @@
                                 <tr>
                                     <td>Odpověď</td>
                                     <td>
-                                        <div class="form-group">
+                                        <div class="form-group{{ $errors->has('answer') ? ' has-error' : '' }}">
                                             <div class="col-md-6">
                                                 <input id="name" type="text" class="form-control" name="answer" value="{{ old('name')}}">
+                                                @if ($errors->has('answer'))
+                                                    <span class="help-block">
+                                                    <strong>{{ $errors->first('answer') }}</strong>
+                                                </span>
+                                                @endif
                                             </div>
                                         </div>
                                     </td>

@@ -12,7 +12,7 @@ class QuestionController extends Controller
     //
     public function __construct(){}
 
-    protected function create(Question $data)
+    protected function createQ(Question $data)
     {
         $qst = Question::create([
             'test_id' => $data['test_id'],
@@ -22,6 +22,16 @@ class QuestionController extends Controller
         ]);
 
         return $qst;
+    }
+
+    protected function createA(Answer $data)
+    {
+        $ans = Answer::create([
+            'question_id' => $data['question_id'],
+            'answer' => $data['answer'],
+        ]);
+
+        return $ans;
     }
 
     public function deleteQ($id)
@@ -43,16 +53,48 @@ class QuestionController extends Controller
         return view('profesor.modifyqst', ['qst' => $qst]);
     }
 
+    public function modify($id, Request $request)
+    {
+        $data = request()->validate([
+            'name' => 'required',
+            'task' => 'required',
+            'scoreMax' => 'required'
+        ]);
+
+        $qst = Question::where('id', $id)->update([
+            'name' => $request->name,
+            'task' => $request->task,
+            'scoreMax' => $request->scoreMax
+        ]);
+
+        $qst = Question::findOrFail($id);
+
+        return view('profesor.modifyqst', ['qst'=>$qst]);
+    }
+
     public function add($id ,Request $request)
     {
+           $data = request()->validate([
+                'name' => 'required',
+                'task' => 'required',
+                'scoreMax' => 'required',
+                'answer' => 'required'
+           ]);
+
            $qst = new Question;
            $qst->test_id = $id;
            $qst->name = $request->name;
            $qst->task = $request->task;
            $qst->scoreMax = $request->scoreMax;
-           $this->create($qst);
+           $testtmp = $this->createQ($qst);
 
            $test = Test::findOrFail($id);
+
+           $ans = new Answer;
+           $ans->question_id = $testtmp->id;
+           $ans->answer = $request->answer;
+           $this->createA($ans);
+
            return view('profesor.show', ['test' => $test]);
     }
 }
