@@ -20,7 +20,6 @@ class CreateQuestionsTable extends Migration
             $table->text('task');
             $table->string('image')->nullable();
             $table->integer('scoreMax');
-            //$table->foreign('testName')->references('name')->on('tests');
             $table->index('test_id');
         });
     }

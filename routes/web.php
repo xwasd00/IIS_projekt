@@ -21,8 +21,6 @@ Route::get('index', function () {return view('index');})
     -> name('index');
 
 
-
-
 /**************** Student routes *************************/
 Route::get('student', 'StudentController@index')
     ->name('student');
@@ -37,6 +35,11 @@ Route::post('student/reg', 'StudentController@register');
 
 Route::get('student/eval', 'StudentController@eval')
     ->name('student.eval');
+
+Route::get('student/testfill/{id}', 'StudentController@testshow')
+    ->name('student.testfill');
+
+Route::post('student/testfill/{id}', 'StudentController@testfill');
 
 /*************** Asistant routes *************************/
 Route::get('asistent', 'AsistentController@index')

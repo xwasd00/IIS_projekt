@@ -14,4 +14,9 @@ class TestInstance extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function student_answers()
+    {
+        return $this->hasMany(StudentAnswer::class);
+    }
 }
