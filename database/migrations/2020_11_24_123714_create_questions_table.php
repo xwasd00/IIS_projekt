@@ -21,6 +21,7 @@ class CreateQuestionsTable extends Migration
             $table->string('image')->nullable();
             $table->integer('scoreMax');
             $table->index('test_id');
+            $table->timestamps();
         });
     }
 

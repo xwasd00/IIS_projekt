@@ -34,4 +34,8 @@ class Test extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    protected $fillable = [
+        'name', 'configuration', 'start', 'end',
+    ];
 }
