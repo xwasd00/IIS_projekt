@@ -4,9 +4,7 @@
     @include('student.title')
 @endsection
 
-@section('navigation')
-    @include('student.navbar')
-@endsection
+
 
 @section('content')
     <div class="container">

@@ -41,5 +41,33 @@ class TestsSeeder extends Seeder
             'question_id' => 2,
             'answer' => 'false',
         ]);
+
+        DB::table('tests')->insert([
+            'name' => 'test1',
+            'configuration' => '',
+            'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 6, 12, 2019))),
+            'end' => date_create(date("Y-m-d H:i:s")),
+        ]);
+
+        DB::table('questions')->insert([
+            'test_id' => 2,
+            'name' => 'otazka 1',
+            'task' => 'bla bla bla',
+            'scoreMax' => 5,
+        ]);
+
+        DB::table('questions')->insert([
+            'test_id' => 2,
+            'name' => 'otazka 2',
+            'task' => 'bla bla bla bla',
+            'scoreMax' => 4,
+        ]);
+
+        DB::table('questions')->insert([
+            'test_id' => 2,
+            'name' => 'otazka 3',
+            'task' => 'bla bla bla bla bla',
+            'scoreMax' => 6,
+        ]);
     }
 }

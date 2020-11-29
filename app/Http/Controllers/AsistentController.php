@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Test;
+use App\TestInstance;
 use Illuminate\Http\Request;
 
 class AsistentController extends Controller
@@ -14,21 +16,15 @@ class AsistentController extends Controller
 
     public function index()
     {
-        return view('asistent.asistent');
+        $testinstances = TestInstance::All();
+        $testinstances->sortBy('user_id');
+        $testinstances->sortBy('test_id');
+        return view('asistent.asistent', ['instances' => $testinstances]);
     }
 
-    public function profile()
-    {
-        return view('asistent.profile');
-    }
 
-    public function reg()
+    public function eval()
     {
-        return view('asistent.reg');
-    }
-
-    public function test()
-    {
-        return view('asistent.test');
+        return view('asistent.eval');
     }
 }

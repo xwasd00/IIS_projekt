@@ -3,11 +3,8 @@
 @include('asistent.title')
 @endsection
 
-@section('navigation')
-    @include('asistent.navbar')
-@endsection
 @section('content')
     <div>
-        Test
+        Hodnoceni
     </div>
 @endsection

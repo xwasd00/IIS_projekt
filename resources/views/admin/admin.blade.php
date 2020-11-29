@@ -4,9 +4,6 @@
     @include('admin.title')
 @endsection
 
-@section('navigation')
-    @include('admin.navbar')
-@endsection
 
 @section('content')
     <div class="container">

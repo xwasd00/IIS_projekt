@@ -5,7 +5,7 @@
 @endsection
 
 @section('navigation')
-    @include('asistent.navbar')
+    @include('layouts.navbar')
 @endsection
 
 @section('content')
@@ -15,7 +15,26 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <p> Assistant page</p>
+                        <p>Registrace testů</p>
+
+                        <table class="table table-hover">
+                            <thead>
+                            <th>Název testu</th>
+                            <th>Jméno studenta</th>
+                            </thead>
+                            <tbody>
+
+                            @foreach($instances as $instance)
+                                @if($instance->test->end > date("Y-m-d H:i:s"))
+                                    <tr>
+                                        <td>{{$instance->test->name}} </td>
+                                        <td>{{$instance->user->name}} </td>
+                                        <td><button class="btn btn-primary" href="">Zaregistrovat studenta</button></td>
+                                    </tr>
+                                @endif
+                            @endforeach
+
+                            </tbody>
                     </div>
                 </div>
             </div>

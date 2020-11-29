@@ -1,0 +1,1 @@
+<li class="navbar-btn"><a href="<?php echo e(route('admin')); ?>">Správa uživatelů</a></li>
