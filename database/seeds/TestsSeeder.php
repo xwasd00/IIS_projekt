@@ -13,6 +13,7 @@ class TestsSeeder extends Seeder
     {
         DB::table('tests')->insert([
             'name' => 'test1',
+            'creator_id' => '2',
             'configuration' => '',
             'start' => date_create("2013-03-15 12:00:00"),
             'end' => date_create("2013-03-15 13:00:00"),
