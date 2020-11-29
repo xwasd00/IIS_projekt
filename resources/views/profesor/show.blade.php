@@ -56,7 +56,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                <button class="btn btn-warning" onclick="window.location='{{ route('profesor')}}'">Zpět</button>
             </div>
         </div>
     </div>

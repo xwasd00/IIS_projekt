@@ -36,6 +36,6 @@ class Test extends Model
     }
 
     protected $fillable = [
-        'name', 'configuration', 'start', 'end',
+        'name', 'creator_id', 'configuration', 'start', 'end',
     ];
 }

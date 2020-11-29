@@ -19,7 +19,6 @@ class CreateAnswersTable extends Migration
             //$table->foreign('user_id')->references('id')->on('questions');
             $table->text('answer');
             $table->timestamps();
-
             $table->index('question_id');
         });
     }

@@ -16,6 +16,7 @@ class TestController extends Controller
     {
         $test = Test::create([
             'name' => $data['name'],
+            'creator_id' => $data['creator_id'],
             'configuration' => $data['configuration'],
             'start' => $data['start'],
             'end' => $data['end'],
@@ -26,18 +27,25 @@ class TestController extends Controller
 
     public function add(request $request)
     {
+        $msg = [
+            'required' => 'Toto pole musí být vyplněné!!',
+            'after' => 'Test nemůže být v minulosti ani končit dříve než začal!!'
+        ];
+
         $data = request()->validate([
             'name' => 'required',
             'configuration' => 'required',
-            'start' => 'required',
-            'end' => 'required'
-        ]);
+            'start' => 'required|after:now',
+            'end' => 'required|after:now|after:start'
+        ], $msg);
 
         $test = new Test;
         $test->name = $request->name;
+        $test->creator_id = auth()->user()->id;
         $test->configuration = $request->configuration;
         $test->start = $request->start;
         $test->end = $request->end;
+
 
         $this->create($test);
 

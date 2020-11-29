@@ -21,6 +21,18 @@ class ProfesorController extends Controller
         return view('profesor.profesor', ['tests' => $tests]);
     }
 
+    public function mytests()
+    {
+        $mytests = Test::all()->where('creator_id', auth()->user()->id);
+        return view('profesor.mytests', ['tests' => $mytests]);
+    }
+
+    public function profile()
+    {
+        $user = auth()->user();
+        return view('profesor.profile', ['user' => $user]);
+    }
+
     public function showTest($testid)
     {
         $test = Test::findOrFail($testid);

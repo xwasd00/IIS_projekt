@@ -15,6 +15,7 @@ class CreateTestsTable extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedBigInteger('creator_id');
             $table->string('name')->unique();
             $table->Text('configuration');
             $table->dateTime('start');// zacatek pristupnosti

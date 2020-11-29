@@ -52,6 +52,12 @@ Route::get('asistent/test', 'AsistentController@test')
 Route::get('profesor/', 'ProfesorController@index')
     ->name('profesor');
 
+Route::get('profesor/mytests', 'ProfesorController@mytests')
+    ->name('profesor.mytests');
+
+Route::get('profesor/profile', 'ProfesorController@profile')
+    ->name('profesor.profile');
+
 Route::get('profesor/show/{id}', 'ProfesorController@showTest', '{id}')
     ->name('profesor.show');
 
