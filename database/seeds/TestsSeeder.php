@@ -43,7 +43,7 @@ class TestsSeeder extends Seeder
         ]);
 
         DB::table('tests')->insert([
-            'name' => 'test1',
+            'name' => 'test2',
             'configuration' => '',
             'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 6, 12, 2019))),
             'end' => date_create(date("Y-m-d H:i:s")),
