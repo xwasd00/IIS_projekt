@@ -10,7 +10,10 @@ class TestController extends Controller
 {
     //
     public function __construct()
-    {}
+    {
+        $this->middleware('auth');
+        $this->middleware('is_profesor');
+    }
 
      protected function create(Test $data)
     {

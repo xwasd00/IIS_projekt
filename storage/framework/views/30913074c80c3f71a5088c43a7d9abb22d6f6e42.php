@@ -28,7 +28,7 @@
                                     <td><?php echo e($test->start); ?> </td>
                                     <td><?php echo e((strtotime($test->end) - strtotime($test->start))/60); ?> minut </td>
                                     <td>
-                                        <button class="btn btn-primary" onclick="window.location='<?php echo e(url('profesor/show', [$test->id])); ?>'"> Detail </button>
+                                        <button class="btn btn-primary" onclick="window.location='<?php echo e(route('profesor.show', [$test->id])); ?>'"> Detail </button>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

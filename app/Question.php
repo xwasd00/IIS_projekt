@@ -32,10 +32,10 @@ class Question extends Model
 {
     use Notifiable;
 
-    protected $fillable = [
-        'name','task', 'test_id',
-    ];
 
+    protected $fillable = [
+        'test_id', 'name', 'task', 'scoreMax',
+    ];
     public function test(){
         return $this->belongsTo(Test::class);
     }
@@ -44,7 +44,5 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
 
-    protected $fillable = [
-        'test_id', 'name', 'task', 'scoreMax',
-    ];
+
 }

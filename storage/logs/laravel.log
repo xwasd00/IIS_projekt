@@ -6854,3 +6854,20 @@ Did you mean one of these?
 #58 /home/michal/Dokumenty/Projekty/IIS_projekt/server.php(21): require_once('/home/michal/Do...')
 #59 {main}
 "} 
+[2020-11-29 14:20:45] local.ERROR: Command "merge" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"merge\" is not defined. at /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php:651)
+[stacktrace]
+#0 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(236): Symfony\\Component\\Console\\Application->find()
+#1 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/symfony/console/Application.php(148): Symfony\\Component\\Console\\Application->doRun()
+#2 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Console/Application.php(88): Symfony\\Component\\Console\\Application->run()
+#3 /home/michal/Dokumenty/Projekty/IIS_projekt/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(121): Illuminate\\Console\\Application->run()
+#4 /home/michal/Dokumenty/Projekty/IIS_projekt/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
+[2020-11-29 14:21:14] local.ERROR: Cannot redeclare App\Question::$fillable {"userId":2,"email":"profesor@example.com","exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot redeclare App\\Question::$fillable at /home/michal/Dokumenty/Projekty/IIS_projekt/app/Question.php:47)
+[stacktrace]
+#0 {main}
+"} 
+[2020-11-29 14:23:36] local.ERROR: Cannot redeclare App\Answer::$fillable {"userId":2,"email":"profesor@example.com","exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot redeclare App\\Answer::$fillable at /home/michal/Dokumenty/Projekty/IIS_projekt/app/Answer.php:39)
+[stacktrace]
+#0 {main}
+"} 
