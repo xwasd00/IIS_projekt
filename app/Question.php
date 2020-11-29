@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -29,6 +30,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Question extends Model
 {
+    use Notifiable;
+
+    protected $fillable = [
+        'name','task', 'test_id',
+    ];
+
     public function test(){
         return $this->belongsTo(Test::class);
     }

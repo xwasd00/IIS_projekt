@@ -20,12 +20,10 @@
                                 <th>Name</th>
                                 <th>Email</th>
                             </tr>
-                            @foreach($users as $row)
                             <tr>
-                                <th>{{$row['name']}}</th>
-                                <th>{{$row['email']}}</th>
+                                <th>{{$user->name}}</th>
+                                <th>{{$user->email}}</th>
                             </tr>
-                            @endforeach
                         </table>
                     </div>
                 </div>
