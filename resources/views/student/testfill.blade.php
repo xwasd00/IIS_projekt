@@ -10,7 +10,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <h3 class="h3">{{$test->name}}</h3>
-                    <div class="text-right">Ukončení: {{$test->end}}<span id="timer"></span></div>
+                    <div class="text-right">Ukončení: {{$test->end}}</div>
 
                     <form class="form-horizontal" method="POST" action="">
                         {{ csrf_field() }}
@@ -29,8 +29,12 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" name="save" value="save" class="btn btn-primary">
                                     Uložit
+                                </button>
+
+                                <button type="submit" name="save" value="exit" class="btn btn-danger">
+                                    Uložit a ukončit test
                                 </button>
                             </div>
                         </div>

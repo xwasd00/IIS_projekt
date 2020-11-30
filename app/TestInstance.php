@@ -11,7 +11,7 @@ class TestInstance extends Model
     use Notifiable;
 
     protected $fillable = [
-        'test_id','user_id', 'score', 'evaluated',
+        'test_id','user_id', 'score', 'evaluated','finished',
     ];
     public function test()
     {

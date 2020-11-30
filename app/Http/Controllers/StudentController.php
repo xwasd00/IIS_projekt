@@ -106,11 +106,9 @@ class StudentController extends Controller
         $test = Test::findOrFail($testid);
 
         $hasinstance = auth()->user()->test_instances->contains('test_id', $testid);
-        if( !$hasinstance ){// studentovi není přiřazen tento test
+        if( !$hasinstance ) {// studentovi není přiřazen tento test
             return redirect('student');
         }
-
-
 
         // kontrola přístupnosti testu
         if($test->start > date("Y-m-d H:i:s", time())){
@@ -120,9 +118,12 @@ class StudentController extends Controller
             return redirect('student');
         }
 
-
+        //kontrola instance
         $testinstance = auth()->user()->test_instances->where('test_id', '=', $testid)->first();
         if(!$testinstance->approved){
+            return redirect('student');
+        }
+        if($testinstance->finished){
             return redirect('student');
         }
 
@@ -156,8 +157,12 @@ class StudentController extends Controller
             return redirect('student');
         }
 
+        //kontrola instance
         $testinstance = auth()->user()->test_instances->where('test_id', '=', $testid)->first();
         if(!$testinstance->approved){
+            return redirect('student');
+        }
+        if($testinstance->finished){
             return redirect('student');
         }
 
@@ -182,11 +187,18 @@ class StudentController extends Controller
 
         }
 
+        $saveorexit = ($request->input('save'));
+        if($saveorexit === null){
+            return redirect('student');
+        }
+        if($saveorexit == 'exit'){
+            $testinstance->finished = true;
+            $testinstance->save();
+            return redirect('student');
+        }
 
         return $this->testshow($testid);
     }
-
-
 
 
     public function profile()

@@ -21,19 +21,19 @@ class InstancesSeeder extends Seeder
         DB::table('student_answers')->insert([
             'question_id'=> 3,
             'test_instance_id' => 1,
-            'answer' => "bla",
+            'answer' => "",
         ]);
 
         DB::table('student_answers')->insert([
             'question_id'=> 4,
             'test_instance_id' => 1,
-            'answer' => "bla",
+            'answer' => "",
         ]);
 
         DB::table('student_answers')->insert([
             'question_id'=> 5,
             'test_instance_id' => 1,
-            'answer' => "bla",
+            'answer' => "",
         ]);
 
         /************** test-past *****************/

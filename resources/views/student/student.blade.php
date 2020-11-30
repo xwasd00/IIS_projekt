@@ -21,7 +21,7 @@
                             <tbody>
 
                             @foreach($tests as $test)
-                                @if($test->test->end > date("Y-m-d H:i:s", time()) && $test->approved)
+                                @if($test->test->end > date("Y-m-d H:i:s", time()) && $test->approved && !$test->finished)
                                 <tr>
                                         <td>{{$test->test->name}} </td>
                                         <td>{{$test->test->start}} </td>

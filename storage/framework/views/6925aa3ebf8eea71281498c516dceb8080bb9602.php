@@ -19,7 +19,7 @@
                             <tbody>
 
                             <?php $__currentLoopData = $tests; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $test): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($test->test->end > date("Y-m-d H:i:s", time()) && $test->approved): ?>
+                                <?php if($test->test->end > date("Y-m-d H:i:s", time()) && $test->approved && !$test->finished): ?>
                                 <tr>
                                         <td><?php echo e($test->test->name); ?> </td>
                                         <td><?php echo e($test->test->start); ?> </td>
