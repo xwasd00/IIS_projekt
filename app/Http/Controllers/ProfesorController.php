@@ -42,7 +42,21 @@ class ProfesorController extends Controller
     public function addqst($testid)
     {
         $test = Test::findOrFail($testid);
-        return view('profesor.addqst', ['test' => $test]);
+        switch($test->configuration){
+            case 1:
+                $counter = 1;
+                $validity = 0;
+                break;
+            case 2:
+                $counter = 3;
+                $validity = 0;
+                break;
+            case 3:
+                $counter = 4;
+                $validity = 1;
+                break;
+        }
+        return view('profesor.addqst', ['test' => $test, 'counter' => $counter, 'validity' => $validity]);
     }
 
     public function modifyqst($qstid)

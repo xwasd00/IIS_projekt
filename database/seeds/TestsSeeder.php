@@ -16,7 +16,7 @@ class TestsSeeder extends Seeder
         DB::table('tests')->insert([
             'name' => 'test-future',
             'creator_id' => 2,
-            'configuration' => '',
+            'configuration' => 1,
             'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 6, 12, 2021))),
             'end' => date_create(date("Y-m-d H:i:s", mktime(13, 0, 0, 6, 12, 2021))),
         ]);
@@ -38,18 +38,20 @@ class TestsSeeder extends Seeder
         DB::table('answers')->insert([
             'question_id' => 2,
             'answer' => 'true',
+            'true' => 1,
         ]);
 
         DB::table('answers')->insert([
             'question_id' => 2,
             'answer' => 'false',
+            'true' => 1,
         ]);
 
         /**************       test-present ***************************/
         DB::table('tests')->insert([
             'name' => 'test-present',
             'creator_id' => 1,
-            'configuration' => '',
+            'configuration' => 2,
             'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 11, 29, 2020))),
             'end' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 01, 29, 2021))),
         ]);
@@ -80,7 +82,7 @@ class TestsSeeder extends Seeder
         DB::table('tests')->insert([
             'name' => 'test-past',
             'creator_id' => 1,
-            'configuration' => '',
+            'configuration' => 3,
             'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 11, 29, 2020))),
             'end' => date_create(date("Y-m-d H:i:s", mktime(20, 0, 0, 11, 29, 2020))),
         ]);

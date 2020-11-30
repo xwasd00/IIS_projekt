@@ -17,6 +17,7 @@ class CreateAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('question_id');
             $table->text('answer');
+            $table->unsignedInteger('true');
             $table->timestamps();
             $table->index('question_id');
         });

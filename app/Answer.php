@@ -29,7 +29,7 @@ class Answer extends Model
     use Notifiable;
 
     protected $fillable = [
-        'question_id','answer',
+        'question_id','answer', 'true',
     ];
 
     public function question(){

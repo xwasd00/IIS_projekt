@@ -17,7 +17,7 @@ class CreateTestsTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('creator_id');
             $table->string('name')->unique();
-            $table->Text('configuration');
+            $table->unsignedInteger('configuration');
             $table->dateTime('start');// zacatek pristupnosti
             $table->dateTime('end');// konec pristupnosti
             $table->timestamps();

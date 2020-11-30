@@ -10,10 +10,11 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <p> Stránka pro vkládání otázek</p>
                         <div> {{--Vytvaření testů--}}
                             <form class="form-horizontal" method="POST" action="{{ route('profesor.addToDB', [$test->id])}}">
                                 {{ csrf_field() }}
+
+                                <h4>Otázky</h4>
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label for="name" class="col-md-4 control-label">Název</label>
@@ -51,17 +52,42 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group{{ $errors->has('answer') ? ' has-error' : '' }}">
+                                <h4>Odpovědi {{$validity}}</h4>
+
+                                @if($counter == 3)
+                                 <h5>Správná</h5>
+                                <div class="form-group{{ $errors->has('answerR') ? ' has-error' : '' }}">
                                     <label for="name" class="col-md-4 control-label">Odpověď</label>
                                     <div class="col-md-6">
-                                        <input id="answer" type="text" class="form-control" name="answer" value="{{ old('scoreMax')}}">
-                                        @if ($errors->has('answer'))
+                                        <input id="answer" type="text" class="form-control" name="answerR" value="{{ old('scoreMax')}}">
+                                        @if ($errors->has('answerR'))
                                             <span class="help-block">
-                                            <strong>{{ $errors->first('answer') }}</strong>
+                                            <strong>{{ $errors->first('answerR') }}</strong>
                                         </span>
                                         @endif
                                     </div>
                                 </div>
+                                <h5>Špatné</h5>
+                                @endif
+                                @for($i = 0; $i < $counter; $i++)
+                                <div class="form-group{{ $errors->has('answer') ? ' has-error' : '' }}">
+                                    <label for="name" class="col-md-4 control-label">Odpověď č.{{$i+1}}</label>
+                                    <div class="col-md-6">
+                                        <input id="answer" type="text" class="form-control" name="answer[]" value="{{ old('scoreMax')}}">
+                                        @if ($errors->has('answer'))
+                                            <span class="help-block">
+                                            <strong>{{ $errors->first('answer') }}</strong>
+                                        </span>
+                                         @endif
+                                        @if($validity == 1)
+                                            <select id="ansTrue" name="ansTrue[]">
+                                                <option value=0>Špatná</option>
+                                                <option value=1>Správná</option>
+                                            </select>
+                                        @endif
+                                    </div>
+                                </div>
+                                @endfor
 
                                 <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">

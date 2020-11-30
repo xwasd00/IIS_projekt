@@ -33,6 +33,7 @@ class QuestionController extends Controller
         $ans = Answer::create([
             'question_id' => $data['question_id'],
             'answer' => $data['answer'],
+            'true' => $data['true'],
         ]);
 
         return $ans;
@@ -85,19 +86,50 @@ class QuestionController extends Controller
                 'answer' => 'required'
            ]);
 
+           $test = Test::findOrFail($id);
+
            $qst = new Question;
-           $qst->test_id = $id;
+           $qst->test_id = $test->id;
            $qst->name = $request->name;
            $qst->task = $request->task;
            $qst->scoreMax = $request->scoreMax;
-           $testtmp = $this->createQ($qst);
+           $qstTmp = $this->createQ($qst);
 
-           $test = Test::findOrFail($id);
 
-           $ans = new Answer;
-           $ans->question_id = $testtmp->id;
-           $ans->answer = $request->answer;
-           $this->createA($ans);
+
+           switch($test->configuration){
+                case 1:
+                   $ans = new Answer;
+                   $ans->question_id = $qstTmp->id;
+                   $ans->answer = $request->answer;
+                   $ans->true = 1;
+                   $this->createA($ans);
+                    break;
+                case 2:
+                    foreach($request->answer as $answer){
+                       $ans = new Answer;
+                       $ans->question_id = $qstTmp->id;
+                       $ans->answer = $answer;
+                       $ans->true = 0;
+                       $this->createA($ans);
+                    }
+                    $ansR = new Answer;
+                    $ansR->question_id = $qstTmp->id;
+                    $ansR->answer = $request->answerR;
+                    $ansR->true = 1;
+                    $this->createA($ansR);
+                    break;
+                case 3:
+                $ansTrue = $request->ansTrue;
+                    foreach($request->answer as $index => $answer){
+                        $ans = new Answer;
+                        $ans->question_id = $qstTmp->id;
+                        $ans->answer = $answer;
+                        $ans->true = $ansTrue[$index];
+                        $this->createA($ans);
+                    }
+                    break;
+           }
 
            return view('profesor.show', ['test' => $test]);
     }

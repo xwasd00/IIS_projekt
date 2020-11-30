@@ -30,7 +30,11 @@
                                 <div class="form-group{{ $errors->has('configuration') ? ' has-error' : '' }}">
                                     <label for="name" class="col-md-4 control-label">Konfigurace</label>
                                     <div class="col-md-6">
-                                        <input id="configuration" type="text" class="form-control" name="configuration" value="{{ old('configuration')}}">
+                                        <select id="configuration" name="configuration">
+                                            <option value=1>Test - Otevřené otázky</option>
+                                            <option value=2>Test - jedna správná odpověď</option>
+                                            <option value=3>Test - více správných odpovědí</option>
+                                        </select>
                                         @if ($errors->has('configuration'))
                                             <span class="help-block">
                                             <strong>{{ $errors->first('configuration') }}</strong>
