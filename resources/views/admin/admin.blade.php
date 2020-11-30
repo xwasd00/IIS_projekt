@@ -14,9 +14,9 @@
                         <button class="btn btn-primary" onclick="window.location='{{ route('register') }}'">Přidat</button>
                         <table class="table table-hover">
                             <thead>
-                            <th>Username</th>
+                            <th>Jméno</th>
                             <th>Email</th>
-                            <th>Privileges [admin][profesor][asistant]</th>
+                            <th>Role</th>
                             </thead>
                             <tbody>
 
@@ -24,9 +24,15 @@
                                 <tr>
                                     <td>{{$user->name}} </td>
                                     <td>{{$user->email}} </td>
-                                    <td>[{{$user->admin}}]
-                                    [{{$user->profesor}}]
-                                    [{{$user->asistent}}]</td>
+                                    <td>@if($user->admin)
+                                            Admin
+                                        @elseif($user->profesor)
+                                            Profesor
+                                        @elseif($user->asistent)
+                                            Asistent
+                                        @else
+                                            Student
+                                        @endif</td>
                                     <td>
                                         @if(!$user->admin)
                                         <form action="{{url('user/delete', [$user->id])}}" method="POST">

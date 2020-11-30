@@ -214,7 +214,7 @@ class StudentController extends Controller
     public function profilesave(Request $request)
     {
 
-        $data = request()->validate([
+        $data = $request->validate([
             'name' => 'required|max:255',
         ]);
 
