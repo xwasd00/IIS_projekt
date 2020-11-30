@@ -70,6 +70,13 @@
                                 </table>
                             </form>
                         </div>
+                        <div>
+                        @if($qst->imagePath === null)
+                        @else
+                            <h3>Obrázek</h3>
+                            <img src="{{asset('storage/' . $qst->imagePath)}}" alt="not accessible">
+                        @endif
+                        </div>
                         <div>{{--Vkládání otázek k testům--}}
                         <h3>Odpovědi</h3>
                         <table class="table table-hover">
