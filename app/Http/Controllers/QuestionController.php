@@ -97,7 +97,7 @@ class QuestionController extends Controller
                 'task' => 'required',
                 'scoreMax' => 'required',
                 'answer' => 'required',
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
            ]);
 
            $test = Test::findOrFail($id);
