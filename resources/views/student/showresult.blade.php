@@ -17,6 +17,10 @@
                                 <div>
                                     <p class="h4">{{$question->name}}<br>
                                     <p>{{$question->task}}</p>
+                                    @if($question->imagePath === null)
+                                    @else
+                                        <img src="{{asset('storage/' . $question->imagePath)}}" alt="not accessible">
+                                    @endif
                                     @if($instance->test->configuration != 3)
                                         <p>Správná odpověď: {{$templates[$question->id]->answer}}</p>
                                     @else

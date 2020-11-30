@@ -129,12 +129,12 @@ class StudentController extends Controller
                 $templates[$answer->question_id] = Answer::All()->where('question_id', '=', $answer->question_id)->where('true', '=', true);
             }
             if($templates[$answer->question_id] === null){
-                $templates[$answer->question_id] = "";
+                $templates[$answer->question_id] = '';
             }
         }
 
 
-        return view('student.showresult', ['instance' => $testinstance, 'questions' => $testinstance->test->questions, 'answers' => $answers, 'scores' => $scores, 'templates'=>$templates]);;
+        return view('student.showresult', ['instance' => $testinstance, 'questions' => $testinstance->test->questions, 'answers' => $answers, 'scores' => $scores, 'templates'=>$templates]);
     }
 
 
@@ -169,14 +169,20 @@ class StudentController extends Controller
 
 
         $student_answers = $testinstance->student_answers;
+        $questions = $test->questions;
         $answers = null;
-        foreach ($student_answers as $answer){
-            $answers[$answer->question_id] = $answer->answer;
+        foreach ($questions as $question){
+            $answers[$question->id] = $student_answers->where('question_id', '=', $question->id)->first();
+            if($answers[$question->id] === null){
+                $answers[$question->id] = "";
+            }
+            else{
+                $answers[$question->id] = $answers[$question->id]->answer;
+            }
         }
 
 
-
-        return view('student.testfill', ['test' => $test, 'questions' => $test->questions, 'answers' => $answers]);
+        return view('student.testfill', ['test' => $test, 'questions' => $questions, 'answers' => $answers]);
     }
 
 

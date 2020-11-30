@@ -12,6 +12,7 @@
                     <h3 class="h3">{{$test->name}}</h3>
                     <div class="text-right">Ukončení: {{$test->end}}</div>
 
+
                     <form class="form-horizontal" method="POST" action="">
                         {{ csrf_field() }}
 
@@ -19,6 +20,10 @@
                         <div class="form-group">
                             <p class="h4 col-lg-8">{{$question->name}}</p><div class="col-lg-4 text-right">Max. bodů: {{$question->scoreMax}}</div>
                             <p class="col-lg-9">{{$question->task}}</p>
+                            @if($question->imagePath === null)
+                            @else
+                                <img src="{{asset('storage/' . $question->imagePath)}}" alt="not accessible">
+                            @endif
                             <div class="col-md-12">
                                 @if($test->configuration == 1)
                                 <input id="questions[{{$question->id}}]" type="text" class="form-control" name="questions[{{$question->id}}]"
@@ -30,7 +35,6 @@
                                         <option value={{$answer->id}} @if($answers[$question->id] == $answer->id) selected @endif>{{$answer->answer}}</option>
                                         @endforeach
                                     </select>
-
                                 @else
                                     @foreach($question->answers as $answer)
                                         <input type="checkbox" id="questions[{{$question->id}}]" name="questions[{{$question->id}}][{{$answer->id}}]" value="{{$answer->id}}"
