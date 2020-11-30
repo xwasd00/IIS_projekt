@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0067)https://www.fit.vutbr.cz/study/courses/IIS/private/projekt/doc.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+    
+    <title>Projekt IIS</title>
+    <style type="text/css">
+    	table { border-collapse: collapse; }
+    	td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+    	dt { font-weight: bold; margin-top: 0.5em; }
+    </style>
+</head>
+<body>
+
+<!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu 
+     podle použitého editoru -->
+
+<h1>5. Testy: tvorba, plnění a hodnocení testových zkoušek</h1> <!-- Nahradte názvem svého zadání -->
+
+<dl>
+	<dt>Autoři</dt>
+	<dd>Michal Sova <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xsovam00@stud.fit.vutbr.cz">xsovam00@stud.fit.vutbr.cz</a> -
+		Tvorba layoutu, stránky Studenta a Asistenta
+	</dd>
+	<dd>Marek Hlávka <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+	    <a href="mailto:xhlavk09@stud.fit.vutbr.cz">xhlavk09@stud.fit.vutbr.cz</a> -
+		Tvorba layoutu, stránky Profesora a tvorby testů
+	</dd>
+	<dt>URL aplikace</dt>
+	<dd><a href="http://www.stud.fit.vutbr.cz/~xautor01/IIS">http://www.stud.fit.vutbr.cz/~xautor01/IIS</a></dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<table>
+<tbody><tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+<tr><td>admin@example.com</td><td>admin</td><td>Administrátor</td></tr>
+<tr><td>profesor@example.com</td><td>profesor</td><td>Profesor</td></tr>
+<tr><td>student@example.com</td><td>student</td><td>Student</td></tr>
+<tr><td>asistent@example.com</td><td>asistent</td><td>Asistent</td></tr>
+</tbody></table>
+
+<p>(Diagram případů užití není nutné vkládat, pokud IS implementuje role a případy užití definované zadáním.)</p> 
+
+<h2>Implementace</h2>
+<p>zadáním projektu bylo vytvořit IS pro zadávání, vyplňování a konrtole online testů. Jakožto jazyk implementace
+jednotlivých stránek byl využit jazyk HTML v kombinaci s CSS pro úpravu stylů. Pro lepší tvorbu celého projektu byl
+zvolen framework Laravel. Celý projekt je rozdělen do jednotlivých částí podle rolí, které byly zpracovávány
+odděleně. Student - tato role má nejméně možností v celém IS. Může vyplňovat testy a dívat se na své výsledky.
+Asistent - má možnosti asistenta, dále může potvrzovat registraci studenta na test a poté jeho vyplňený test
+vyhodnotit. Profesor - má možnosti asistenta a studenta, dále může vytvářet testy, tyto testy pak dále upravovat,
+přídávat/měnit/odebírat otázky a přidávat/odebírat správné/špatné odpovědi na tyto otázky. Jako poslední role je
+Admin. Admin má možnosti všech ostatních rolí, dále může spravovat uživatele v databázi - přidávat a odebírat účty,
+ketré mají přístup k IS.</p>
+
+<h3>Databáze</h3>
+
+Zde vložte grafické schéma relační databáze (tabulek v databázi).
+
+<h2>Instalace</h2>
+
+Stručně popište: 
+<ul>
+<li>postup instalace na server,</li>
+<li>softwarové požadavky (verze PHP apod.),</li>
+<li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
+</ul>
+
+<h2>Známé problémy</h2>
+<p>Zde popište, které body zadání nejsou implementovány a z jakého důvodu. Např. &#8222;Z časových důvodů nebyla implementována správa uživatelů.&#8221; Pomůžete tím zrychlit hodnocení, když neimplementované funkce nebudeme muset dlouze hledat.</p>
+
+
+
+</body></html>

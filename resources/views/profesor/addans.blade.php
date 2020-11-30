@@ -26,6 +26,10 @@
                                                     <strong>{{ $errors->first('answer') }}</strong>
                                                 </span>
                                                 @endif
+                                                <select id="ansTrue" name="ansTrue">
+                                                    <option value=0>Špatná</option>
+                                                    <option value=1>Správná</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </td>

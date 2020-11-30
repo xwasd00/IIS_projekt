@@ -19,6 +19,7 @@ class AnswerController extends Controller
         $ans = Answer::create([
             'question_id' => $data['question_id'],
             'answer' => $data['answer'],
+            'true' => $data['ansTrue'],
         ]);
 
         return $ans;
@@ -33,6 +34,7 @@ class AnswerController extends Controller
         $ans = new Answer;
         $ans->question_id = $qst_id;
         $ans->answer = $request->answer;
+        $ans->ansTrue = $request->ansTrue;
 
         $this->create($ans);
 
