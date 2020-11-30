@@ -11,9 +11,11 @@ class TestsSeeder extends Seeder
      */
     public function run()
     {
+
+        /*********          test-future              *******************/
         DB::table('tests')->insert([
-            'name' => 'test1',
-            'creator_id' => '2',
+            'name' => 'test-future',
+            'creator_id' => 2,
             'configuration' => '',
             'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 6, 12, 2021))),
             'end' => date_create(date("Y-m-d H:i:s", mktime(13, 0, 0, 6, 12, 2021))),
@@ -43,11 +45,13 @@ class TestsSeeder extends Seeder
             'answer' => 'false',
         ]);
 
+        /**************       test-present ***************************/
         DB::table('tests')->insert([
-            'name' => 'test-old',
+            'name' => 'test-present',
+            'creator_id' => 1,
             'configuration' => '',
             'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 11, 29, 2020))),
-            'end' => date_create(date("Y-m-d H:i:s")),
+            'end' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 01, 29, 2021))),
         ]);
 
         DB::table('questions')->insert([
@@ -71,10 +75,13 @@ class TestsSeeder extends Seeder
             'scoreMax' => 6,
         ]);
 
+        /********************  test-past       ************************************/
+
         DB::table('tests')->insert([
-            'name' => 'test3',
+            'name' => 'test-past',
+            'creator_id' => 1,
             'configuration' => '',
-            'start' => date_create(date("Y-m-d H:i:s")),
+            'start' => date_create(date("Y-m-d H:i:s", mktime(12, 0, 0, 11, 29, 2020))),
             'end' => date_create(date("Y-m-d H:i:s", mktime(20, 0, 0, 11, 29, 2020))),
         ]);
 
@@ -99,28 +106,6 @@ class TestsSeeder extends Seeder
             'scoreMax' => 6,
         ]);
 
-        DB::table('test_instances')->insert([
-            'test_id' => 2,
-            'user_id' => 1,
-            'approved' => true,
-        ]);
 
-        DB::table('student_answers')->insert([
-            'question_id'=> 3,
-            'test_instance_id' => 1,
-            'answer' => "bla",
-        ]);
-
-        DB::table('student_answers')->insert([
-            'question_id'=> 4,
-            'test_instance_id' => 1,
-            'answer' => "bla",
-        ]);
-
-        DB::table('student_answers')->insert([
-            'question_id'=> 5,
-            'test_instance_id' => 1,
-            'answer' => "bla",
-        ]);
     }
 }

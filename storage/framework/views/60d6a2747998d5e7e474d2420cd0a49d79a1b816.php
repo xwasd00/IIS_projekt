@@ -53,7 +53,6 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
-                <button class="btn btn-warning" onclick="window.location='<?php echo e(route('profesor')); ?>'">Zpět</button>
             </div>
         </div>
     </div>

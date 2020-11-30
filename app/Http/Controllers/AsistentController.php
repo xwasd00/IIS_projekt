@@ -69,6 +69,7 @@ class AsistentController extends Controller
 
         $student_answers = $instance->student_answers;
         $answers = null;
+        $scores = null;
         foreach ($student_answers as $answer){
             $answers[$answer->question_id] = $answer->answer;
             $scores[$answer->question_id] = $answer->score;
@@ -82,7 +83,7 @@ class AsistentController extends Controller
     public function evaluatesave($instanceid, Request $request)
     {
         //kontrola správné instance
-        $instance = TestInstance::findOrFail($instanceid)->first();
+        $instance = TestInstance::findOrFail($instanceid);
 
 
 
@@ -91,9 +92,12 @@ class AsistentController extends Controller
             return redirect('asistent/eval');
         }
 
+
+
         if(!$instance->approved){
             return redirect('asistent/eval');
         }
+
 
         $total = 0;
         $scores = $request->input('scores');

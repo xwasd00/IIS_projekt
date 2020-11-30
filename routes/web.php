@@ -61,13 +61,15 @@ Route::post('asistent/eval/{id}', 'AsistentController@evaluatesave');
 Route::get('profesor/', 'ProfesorController@index')
     ->name('profesor');
 
+
 Route::get('profesor/mytests', 'ProfesorController@mytests')
     ->name('profesor.mytests');
 
 Route::get('profesor/profile', 'ProfesorController@profile')
     ->name('profesor.profile');
 
-Route::get('profesor/show/{id}', 'ProfesorController@showTest');
+Route::get('profesor/show/{id}', 'ProfesorController@showTest')
+    ->name('profesor.show');
 
 Route::get('profesor/addqst/{id}', 'ProfesorController@addqst')
     ->name('profesor.addqst');
@@ -87,8 +89,12 @@ Route::post('profesor/addtest', 'TestController@add')
 Route::post('profesor/modifyqst/{id}', 'QuestionController@modify')
     ->name('profesor.modifyqstDB');
 
+Route::post('profesor/addqst/{id}', 'QuestionController@add');
+
 Route::post('profesor/addqst/{id}', 'QuestionController@add')
     ->name('profesor.addToDB');
+
+
 
 Route::post('profesor/addans/{id}', 'AnswerController@add')
     ->name('profesor.addAnsDB');
