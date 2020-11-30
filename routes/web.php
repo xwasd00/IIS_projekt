@@ -30,8 +30,13 @@ Route::get('student/reg', 'StudentController@reg')
 
 Route::post('student/reg', 'StudentController@register');
 
-Route::get('student/profile', 'StudentController@profile')
-    ->name('student.profile');
+Route::get('profile', 'StudentController@profile')
+    ->name('profile');
+
+Route::get('profile/edit', 'StudentController@profileedit')
+    ->name('profile.edit');
+
+Route::post('profile/edit', 'StudentController@profilesave');
 
 Route::get('student/eval', 'StudentController@eval')
     ->name('student.eval');
@@ -60,7 +65,6 @@ Route::post('asistent/eval/{id}', 'AsistentController@evaluatesave');
 /*************** Profesor routes *************************/
 Route::get('profesor/', 'ProfesorController@index')
     ->name('profesor');
-
 
 Route::get('profesor/mytests', 'ProfesorController@mytests')
     ->name('profesor.mytests');
@@ -94,8 +98,6 @@ Route::post('profesor/addqst/{id}', 'QuestionController@add');
 Route::post('profesor/addqst/{id}', 'QuestionController@add')
     ->name('profesor.addToDB');
 
-
-
 Route::post('profesor/addans/{id}', 'AnswerController@add')
     ->name('profesor.addAnsDB');
 
@@ -108,6 +110,8 @@ Route::delete('profesor/deleteA/{id}', 'QuestionController@deleteA')
 /**************** Admin routes ***************************/
 Route::get('admin', 'AdminController@index')
     ->name('admin');
+
+Route::get('user/delete/{id}', function () {return redirect('admin');});
 
 Route::delete('user/delete/{id}', 'AdminController@delete');
 

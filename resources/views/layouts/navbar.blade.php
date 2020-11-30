@@ -31,7 +31,7 @@
             </ul>
         </li>
 
-        <li class="navbar-btn"><a href="{{route('student.profile')}}">Profil</a></li>
+        <li class="navbar-btn"><a href="{{route('profile')}}">Profil</a></li>
 
 
     @elseif(auth()->user()->profesor)
@@ -56,7 +56,7 @@
             </ul>
         </li>
 
-        <li class="navbar-btn"><a href="{{route('student.profile')}}">Profil</a></li>
+        <li class="navbar-btn"><a href="{{route('profile')}}">Profil</a></li>
 
 
     @elseif(auth()->user()->asistent)
@@ -72,7 +72,7 @@
             </ul>
         </li>
 
-        <li class="navbar-btn"><a href="{{route('student.profile')}}">Profil</a></li>
+        <li class="navbar-btn"><a href="{{route('profile')}}">Profil</a></li>
 
 
     @else
