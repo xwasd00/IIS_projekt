@@ -4,10 +4,6 @@
     @include('profesor.title')
 @endsection
 
-@section('navigation')
-    @include('profesor.navbar')
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

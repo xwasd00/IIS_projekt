@@ -21,8 +21,6 @@ Route::get('index', function () {return view('index');})
     -> name('index');
 
 
-
-
 /**************** Student routes *************************/
 Route::get('student', 'StudentController@index')
     ->name('student');
@@ -30,22 +28,33 @@ Route::get('student', 'StudentController@index')
 Route::get('student/reg', 'StudentController@reg')
     ->name('student.reg');
 
+Route::post('student/reg', 'StudentController@register');
+
 Route::get('student/profile', 'StudentController@profile')
     ->name('student.profile');
 
-/*************** Asistant routes *************************/
+Route::get('student/eval', 'StudentController@eval')
+    ->name('student.eval');
+
+Route::get('student/testfill/{id}', 'StudentController@testshow')
+    ->name('student.testfill');
+
+Route::post('student/testfill/{id}', 'StudentController@testfill');
+
+/*************** Asistent routes *************************/
 Route::get('asistent', 'AsistentController@index')
     ->name('asistent');
 
-Route::get('asistent/profile', 'AsistentController@profile')
-    ->name('asistent.profile');
+Route::get('asistent/reg', function () {return redirect('asistent');});
 
-Route::get('asistent/reg', 'AsistentController@reg')
-    ->name('asistent.reg');
+Route::post('asistent/reg', 'AsistentController@reg');
 
-Route::get('asistent/test', 'AsistentController@test')
-    ->name('asistent.test');
+Route::get('asistent/eval', 'AsistentController@eval')
+    ->name('asistent.eval');
 
+Route::get('asistent/eval/{id}', 'AsistentController@evaluate');
+
+Route::post('asistent/eval/{id}', 'AsistentController@evaluatesave');
 
 
 /*************** Profesor routes *************************/
@@ -58,37 +67,36 @@ Route::get('profesor/mytests', 'ProfesorController@mytests')
 Route::get('profesor/profile', 'ProfesorController@profile')
     ->name('profesor.profile');
 
-Route::get('profesor/show/{id}', 'ProfesorController@showTest', '{id}')
-    ->name('profesor.show');
+Route::get('profesor/show/{id}', 'ProfesorController@showTest');
 
-Route::get('profesor/addqst/{id}', 'ProfesorController@addqst', '{id}')
+Route::get('profesor/addqst/{id}', 'ProfesorController@addqst')
     ->name('profesor.addqst');
 
 Route::get('profesor/addtest', 'ProfesorController@addtest')
     ->name('profesor.addtest');
 
-Route::get('profesor/modify/{id}', 'ProfesorController@modifyqst', '{id}')
+Route::get('profesor/modify/{id}', 'ProfesorController@modifyqst')
     ->name('profesor.modifyqst');
 
-Route::get('profesor/addans/{id}', 'ProfesorController@addans', '{id}')
+Route::get('profesor/addans/{id}', 'ProfesorController@addans')
     ->name('profesor.addans');
 
 Route::post('profesor/addtest', 'TestController@add')
     ->name('profesor.add');
 
-Route::post('profesor/modifyqst/{id}', 'QuestionController@modify', '{id}')
+Route::post('profesor/modifyqst/{id}', 'QuestionController@modify')
     ->name('profesor.modifyqstDB');
 
-Route::post('profesor/addqst/{id}', 'QuestionController@add', '{id}')
+Route::post('profesor/addqst/{id}', 'QuestionController@add')
     ->name('profesor.addToDB');
 
-Route::post('profesor/addans/{id}', 'AnswerController@add', '{id}')
+Route::post('profesor/addans/{id}', 'AnswerController@add')
     ->name('profesor.addAnsDB');
 
-Route::delete('profesor/deleteQ/{id}', 'QuestionController@deleteQ', '{id}')
+Route::delete('profesor/deleteQ/{id}', 'QuestionController@deleteQ')
     ->name('question.deleteQ');
 
-Route::delete('profesor/deleteA/{id}', 'QuestionController@deleteA', '{id}')
+Route::delete('profesor/deleteA/{id}', 'QuestionController@deleteA')
     ->name('question.deleteA');
 
 /**************** Admin routes ***************************/

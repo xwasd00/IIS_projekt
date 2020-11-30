@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -29,6 +30,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Question extends Model
 {
+    use Notifiable;
+
+
+    protected $fillable = [
+        'test_id', 'name', 'task', 'scoreMax',
+    ];
     public function test(){
         return $this->belongsTo(Test::class);
     }
@@ -37,7 +44,5 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
 
-    protected $fillable = [
-        'test_id', 'name', 'task', 'scoreMax',
-    ];
+
 }

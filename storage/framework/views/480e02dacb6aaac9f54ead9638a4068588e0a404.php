@@ -30,18 +30,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                    <!-- Branding Image --><!--
-                    <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                        <?php echo e(config('app.name', 'Laravel')); ?>
-
-                    </a>-->
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <?php echo $__env->yieldContent('navigation'); ?>
+                        <?php echo $__env->make('layouts.navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

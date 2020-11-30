@@ -1,12 +1,10 @@
-@extends('layouts.app')
-
-@section('title')
-    @include('student.title')
-@endsection
+<?php $__env->startSection('title'); ?>
+    <?php echo $__env->make('student.title', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
 
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container">
         <div class="row jtify-content-center">
             <div class="col-md-8">
@@ -19,8 +17,8 @@
                                 <th>Email</th>
                             </tr>
                             <tr>
-                                <th>{{$user->name}}</th>
-                                <th>{{$user->email}}</th>
+                                <th><?php echo e($user->name); ?></th>
+                                <th><?php echo e($user->email); ?></th>
                             </tr>
                         </table>
                     </div>
@@ -28,4 +26,5 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

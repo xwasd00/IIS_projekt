@@ -10,25 +10,25 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <p> Aktivní testy</p>
-
+                        <p>Hodnocení testů</p>
                         <table class="table table-hover">
                             <thead>
                             <th>Název</th>
-                            <th>začátek</th>
-                            <th>časový limit</th>
+                            <th>Hodnocení</th>
                             </thead>
                             <tbody>
 
                             @foreach($tests as $test)
-                                @if($test->test->end > date("Y-m-d H:i:s") && $test->approved)
-                                <tr>
+                                @if($test->test->end < date("Y-m-d H:i:s"))
+                                    <tr>
                                         <td>{{$test->test->name}} </td>
-                                        <td>{{$test->test->start}} </td>
-                                        <td>{{(strtotime($test->test->end) - strtotime($test->test->start))/60}} minut</td>
-                                        @if($test->test->start < date("Y-m-d H:i:s"))
-                                            <td><button class="btn btn-primary" onclick="window.location='{{url('student/testfill', [$test->test->id])}}'">Začít</button></td>
+                                        <td>
+                                        @if($test->evaluated)
+                                            {{$test->score}}
+                                        @else
+                                                <span>Nezadáno</span>
                                         @endif
+                                        </td>
                                     </tr>
                                 @endif
                             @endforeach

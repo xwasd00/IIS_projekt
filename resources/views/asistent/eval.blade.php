@@ -1,7 +1,6 @@
 @extends('layouts.app')
-
 @section('title')
-    @include('asistent.title')
+@include('asistent.title')
 @endsection
 
 @section('content')
@@ -11,7 +10,7 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <p>Registrace žáků</p>
+                        <p>Hodnocení žáků</p>
 
                         <table class="table table-hover">
                             <thead>
@@ -21,16 +20,16 @@
                             <tbody>
 
                             @foreach($instances as $instance)
-                                @if($instance->test->end > date("Y-m-d H:i:s") && !$instance->approved)
+                                @if($instance->test->end < date("Y-m-d H:i:s") && $instance->approved)
                                     <tr>
                                         <td>{{$instance->test->name}} </td>
                                         <td>{{$instance->user->name}} </td>
                                         <td>
-                                        <form class="right" action="{{url('asistent/reg')}}" method="post">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" id="test_id" name="test_id" value="{{$instance->id}}">
-                                            <button class="btn btn-primary" type="submit">Registrovat studenta</button>
-                                        </form>
+                                            @if($instance->evaluated)
+                                                (hodnoceno: {{$instance->score}})  <button class="btn btn-primary" onclick="window.location='{{url('asistent/eval', [$instance->id])}}'">Upravit hodnocení</button>
+                                            @else
+                                                <button class="btn btn-primary" onclick="window.location='{{url('asistent/eval', [$instance->id])}}'">Hodnotit</button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endif

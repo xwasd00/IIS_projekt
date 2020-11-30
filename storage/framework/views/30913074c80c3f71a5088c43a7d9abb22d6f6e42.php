@@ -2,9 +2,6 @@
     <?php echo $__env->make('profesor.title', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('navigation'); ?>
-    <?php echo $__env->make('profesor.navbar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-<?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
     <div class="container">
@@ -28,7 +25,7 @@
                                     <td><?php echo e($test->start); ?> </td>
                                     <td><?php echo e((strtotime($test->end) - strtotime($test->start))/60); ?> minut </td>
                                     <td>
-                                        <button class="btn btn-primary" onclick="window.location='<?php echo e(url('profesor/show', [$test->id])); ?>'"> Detail </button>
+                                        <button class="btn btn-primary" onclick="window.location='<?php echo e(route('profesor.show', [$test->id])); ?>'"> Detail </button>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

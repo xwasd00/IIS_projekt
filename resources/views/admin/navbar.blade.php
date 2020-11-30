@@ -1,0 +1,1 @@
+<li class="navbar-btn"><a href="{{route('admin')}}">Správa uživatelů</a></li>
