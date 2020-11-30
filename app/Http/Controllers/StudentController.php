@@ -204,29 +204,52 @@ class StudentController extends Controller
             return redirect('student');
         }
 
+
+
         //kontrola instance
         $testinstance = auth()->user()->test_instances->where('test_id', '=', $testid)->first();
         if(!$testinstance->approved){
             return redirect('student');
         }
+
+
+
+
         if($testinstance->finished){
             return redirect('student');
         }
 
+
         //získání otázek (a odpovědí k otázkám)
         $questions = ($request->input('questions'));
+
         if($questions === null){
-            return redirect('student');
+            $saveorexit = ($request->input('save'));
+            if($saveorexit === null){
+                return redirect('student');
+            }
+            if($saveorexit == 'exit'){
+                $testinstance->finished = true;
+                $testinstance->save();
+                return redirect('student');
+            }
+            return $this->testshow($testid);
         }
+
+
 
         foreach ($questions as $question => $answer){
 
             $student_answer = $testinstance->student_answers->where('question_id', '=', $question)->first();
 
             if($student_answer === null){
-                return $this->testshow($testid);
+                $student_answer = StudentAnswer::create([
+                    'test_instance_id' => $testinstance->id,
+                    'question_id' => $question->id,
+                    'answer' => "",
+                ]);
+                $student_answer->save();
             }
-            else {
                 //kontrola konfigurace
                 if($test->configuration == 1) {
                     $student_answer->answer = $answer;
@@ -237,7 +260,6 @@ class StudentController extends Controller
                 else{
                     $student_answer->answer = implode(' ', $answer);
                 }
-            }
             $student_answer->save();
 
         }
