@@ -21,7 +21,7 @@
                             <tbody>
 
                             @foreach($instances as $instance)
-                                @if($instance->test->end > date("Y-m-d H:i:s") && !$instance->approved)
+                                @if($instance->test->end > date("Y-m-d H:i:s", time()) && !$instance->approved)
                                     <tr>
                                         <td>{{$instance->test->name}} </td>
                                         <td>{{$instance->user->name}} </td>

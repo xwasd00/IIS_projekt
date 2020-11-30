@@ -58,7 +58,7 @@ class AsistentController extends Controller
 
 
         // kontrola přístupnosti testu
-        if($instance->test->end > date("Y-m-d H:i:s")){
+        if($instance->test->end > date("Y-m-d H:i:s", time())){
             return redirect('asistent/eval');
         }
 
@@ -88,7 +88,7 @@ class AsistentController extends Controller
 
 
         // kontrola přístupnosti testu
-        if($instance->test->end > date("Y-m-d H:i:s")){
+        if($instance->test->end > date("Y-m-d H:i:s", time())){
             return redirect('asistent/eval');
         }
 

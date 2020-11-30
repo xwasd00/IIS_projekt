@@ -19,7 +19,7 @@
                             <tbody>
 
                             <?php $__currentLoopData = $instances; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $instance): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php if($instance->test->end > date("Y-m-d H:i:s") && !$instance->approved): ?>
+                                <?php if($instance->test->end > date("Y-m-d H:i:s", time()) && !$instance->approved): ?>
                                     <tr>
                                         <td><?php echo e($instance->test->name); ?> </td>
                                         <td><?php echo e($instance->user->name); ?> </td>

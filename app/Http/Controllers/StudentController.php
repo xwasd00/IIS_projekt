@@ -30,7 +30,7 @@ class StudentController extends Controller
     public function reg()
     {
         //nalezení dostupných testů
-        $tests = Test::All()->where('end', ">", date("Y-m-d H:i:s"));
+        $tests = Test::All()->where('end', ">", date("Y-m-d H:i:s", time()));
         $instances = auth()->user()->test_instances;
 
         // přidání atributu 'registered', v případě, že je student zaregistrován
@@ -94,6 +94,7 @@ class StudentController extends Controller
     public function eval()
     {
         $testinstances = auth()->user()->test_instances;
+
         return view('student.eval', ['tests' => $testinstances]);
     }
 
@@ -112,10 +113,10 @@ class StudentController extends Controller
 
 
         // kontrola přístupnosti testu
-        if($test->start > date("Y-m-d H:i:s")){
+        if($test->start > date("Y-m-d H:i:s", time())){
             return redirect('student');
         }
-        if($test->end < date("Y-m-d H:i:s")){
+        if($test->end < date("Y-m-d H:i:s", time())){
             return redirect('student');
         }
 
@@ -148,10 +149,10 @@ class StudentController extends Controller
         }
 
         // kontrola přístupnosti testu
-        if($test->start > date("Y-m-d H:i:s")){
+        if($test->start > date("Y-m-d H:i:s", time())){
             return redirect('student');
         }
-        if($test->end < date("Y-m-d H:i:s")){
+        if($test->end < date("Y-m-d H:i:s", time())){
             return redirect('student');
         }
 

@@ -21,12 +21,12 @@
                             <tbody>
 
                             @foreach($tests as $test)
-                                @if($test->test->end > date("Y-m-d H:i:s") && $test->approved)
+                                @if($test->test->end > date("Y-m-d H:i:s", time()) && $test->approved)
                                 <tr>
                                         <td>{{$test->test->name}} </td>
                                         <td>{{$test->test->start}} </td>
                                         <td>{{(strtotime($test->test->end) - strtotime($test->test->start))/60}} minut</td>
-                                        @if($test->test->start < date("Y-m-d H:i:s"))
+                                        @if($test->test->start < date("Y-m-d H:i:s", time()))
                                             <td><button class="btn btn-primary" onclick="window.location='{{url('student/testfill', [$test->test->id])}}'">Začít</button></td>
                                         @endif
                                     </tr>

@@ -19,7 +19,7 @@
                             <tbody>
 
                             @foreach($tests as $test)
-                                @if($test->test->end < date("Y-m-d H:i:s"))
+                                @if($test->test->end < date("Y-m-d H:i:s", time()))
                                     <tr>
                                         <td>{{$test->test->name}} </td>
                                         <td>
