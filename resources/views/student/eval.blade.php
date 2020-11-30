@@ -25,6 +25,9 @@
                                         <td>
                                         @if($test->evaluated)
                                             {{$test->score}}
+                                                <button class="btn btn-primary" onclick="window.location='{{url('student/showresult', ['id' => $test->id])}}'">
+                                                    Detail
+                                                </button>
                                         @else
                                                 <span>Nezadáno</span>
                                         @endif

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Question;
 use App\StudentAnswer;
 use App\Test;
@@ -70,14 +71,24 @@ class AsistentController extends Controller
         $student_answers = $instance->student_answers;
         $answers = null;
         $scores = null;
+        $templates = null;
         foreach ($student_answers as $answer){
             $answers[$answer->question_id] = $answer->answer;
             $scores[$answer->question_id] = $answer->score;
+            if($instance->test->configuration != 3) {
+                $templates[$answer->question_id] = Answer::All()->where('question_id', '=', $answer->question_id)->where('true', '=', true)->first();
+            }
+            else{
+                $templates[$answer->question_id] = Answer::All()->where('question_id', '=', $answer->question_id)->where('true', '=', true);
+            }
+            if($templates[$answer->question_id] === null){
+                $templates[$answer->question_id] = "";
+            }
         }
 
 
 
-        return view('asistent.evaluate', ['instance' => $instance, 'questions' => $instance->test->questions, 'answers' => $answers, 'scores' => $scores]);
+        return view('asistent.evaluate', ['instance' => $instance, 'questions' => $instance->test->questions, 'answers' => $answers, 'scores' => $scores, 'templates'=>$templates]);
     }
 
     public function evaluatesave($instanceid, Request $request)

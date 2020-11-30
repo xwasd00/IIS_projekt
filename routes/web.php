@@ -41,6 +41,8 @@ Route::post('profile/edit', 'StudentController@profilesave');
 Route::get('student/eval', 'StudentController@eval')
     ->name('student.eval');
 
+Route::get('student/showresult/{id}', 'StudentController@showresult');
+
 Route::get('student/testfill/{id}', 'StudentController@testshow')
     ->name('student.testfill');
 

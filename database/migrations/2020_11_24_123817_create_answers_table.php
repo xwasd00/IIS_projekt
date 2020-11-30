@@ -17,7 +17,7 @@ class CreateAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('question_id');
             $table->text('answer');
-            $table->unsignedInteger('true');
+            $table->boolean('true')->default(0);
             $table->timestamps();
             $table->index('question_id');
         });

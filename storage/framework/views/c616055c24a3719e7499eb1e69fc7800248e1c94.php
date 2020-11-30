@@ -24,6 +24,9 @@
                                         <?php if($test->evaluated): ?>
                                             <?php echo e($test->score); ?>
 
+                                                <button class="btn btn-primary" onclick="window.location='<?php echo e(url('student/showresult', ['id' => $test->id])); ?>'">
+                                                    Detail
+                                                </button>
                                         <?php else: ?>
                                                 <span>Nezadáno</span>
                                         <?php endif; ?>
