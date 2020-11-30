@@ -24,28 +24,29 @@ class TestsSeeder extends Seeder
         DB::table('questions')->insert([
             'test_id' => 1,
             'name' => 'otazka 1',
-            'task' => 'bla bla bla',
+            'task' => 'task 1',
             'scoreMax' => 5,
         ]);
 
         DB::table('questions')->insert([
             'test_id' => 1,
             'name' => 'otazka 2',
-            'task' => 'bla bla bla bla',
+            'task' => 'task 2',
             'scoreMax' => 4,
         ]);
 
         DB::table('answers')->insert([
-            'question_id' => 2,
+            'question_id' => 1,
             'answer' => 'true',
-            'true' => 1,
+            'true' => true,
         ]);
 
         DB::table('answers')->insert([
             'question_id' => 2,
             'answer' => 'false',
-            'true' => 1,
+            'true' => true,
         ]);
+
 
         /**************       test-present ***************************/
         DB::table('tests')->insert([
@@ -59,22 +60,55 @@ class TestsSeeder extends Seeder
         DB::table('questions')->insert([
             'test_id' => 2,
             'name' => 'otazka 1',
-            'task' => 'bla bla bla',
+            'task' => 'task 1',
             'scoreMax' => 5,
         ]);
 
         DB::table('questions')->insert([
             'test_id' => 2,
             'name' => 'otazka 2',
-            'task' => 'bla bla bla bla',
+            'task' => 'task 2',
             'scoreMax' => 4,
         ]);
 
         DB::table('questions')->insert([
             'test_id' => 2,
             'name' => 'otazka 3',
-            'task' => 'bla bla bla bla bla',
+            'task' => 'task 3',
             'scoreMax' => 6,
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 3,
+            'answer' => 'true',
+            'true' => true,
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 4,
+            'answer' => 'true',
+            'true' => true,
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 5,
+            'answer' => 'true',
+            'true' => true,
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 3,
+            'answer' => 'false',
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 4,
+            'answer' => 'false',
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 5,
+            'answer' => 'false',
         ]);
 
         /********************  test-past       ************************************/
@@ -108,6 +142,53 @@ class TestsSeeder extends Seeder
             'scoreMax' => 6,
         ]);
 
+        DB::table('answers')->insert([
+            'question_id' => 6,
+            'answer' => 'true',
+            'true' => true,
+        ]);
 
+        DB::table('answers')->insert([
+            'question_id' => 7,
+            'answer' => 'true',
+            'true' => true,
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 8,
+            'answer' => 'true',
+            'true' => true,
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 6,
+            'answer' => 'false',
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 7,
+            'answer' => 'true',
+            'true' => true,
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 8,
+            'answer' => 'false',
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 6,
+            'answer' => 'false',
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 7,
+            'answer' => 'false',
+        ]);
+
+        DB::table('answers')->insert([
+            'question_id' => 8,
+            'answer' => 'false',
+        ]);
     }
 }

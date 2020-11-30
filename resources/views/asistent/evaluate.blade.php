@@ -20,12 +20,37 @@
                                 <div class="form-group">
                                     <p class="h4">{{$question->name}}<br>
                                     <p>{{$question->task}}</p>
-                                    @if(!empty($answers))
-                                    <p>{{$answers[$question->id]}}</p>
-                                    <div class="col-lg-3">
-                                        <input id="scores[{{$question->id}}]" type="number" class="form-control" name="scores[{{$question->id}}]" min="0" max="{{$question->scoreMax}}"
-                                               value="{{$scores[$question->id]}}">(Max:{{$question->scoreMax}})
-                                    </div>
+                                    @if($instance->test->configuration != 3)
+                                        <p>Správná odpověď: {{$templates[$question->id]->answer}}</p>
+                                    @else
+                                        <p>Správné odpovědi:
+                                        @foreach($templates[$question->id] as $template)
+                                            {{$template->answer}}
+                                            @endforeach
+                                        </p>
+                                    @endif
+                                    <p>Odpověď studenta:</p><br>
+                                @if(!empty($answers))
+                                        @if($instance->test->configuration == 1)
+                                            <p>{{$answers[$question->id]}}</p>
+                                        @elseif($instance->test->configuration == 2)
+                                            @foreach($question->answers as $answer)
+                                                @if($answers[$question->id] == $answer->id)
+                                                    <p>{{$answer->answer}}</p>
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            @foreach($question->answers as $answer)
+                                                       @if(in_array($answer->id, explode(" ", $answers[$question->id])))
+                                                       <p>{{$answer->answer}}</p>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                            <div class="col-lg-3">
+                                                <input id="scores[{{$question->id}}]" type="number" class="form-control" name="scores[{{$question->id}}]" min="0" max="{{$question->scoreMax}}"
+                                                       value="{{$scores[$question->id]}}">(Max:{{$question->scoreMax}})
+                                            </div>
+
                                     @endif
                                 </div>
                             @endforeach

@@ -98,6 +98,13 @@ class StudentController extends Controller
         return view('student.eval', ['tests' => $testinstances]);
     }
 
+    public function showresult($instanceid)
+    {
+        $testinstances = auth()->user()->test_instances;
+
+        return view('student.eval', ['tests' => $testinstances]);
+    }
+
 
 
     public function testshow($testid)
@@ -126,6 +133,8 @@ class StudentController extends Controller
         if($testinstance->finished){
             return redirect('student');
         }
+
+
 
         $student_answers = $testinstance->student_answers;
         $answers = null;
@@ -172,7 +181,6 @@ class StudentController extends Controller
             return redirect('student');
         }
 
-
         foreach ($questions as $question => $answer){
 
             $student_answer = $testinstance->student_answers->where('question_id', '=', $question)->first();
@@ -181,7 +189,16 @@ class StudentController extends Controller
                 return $this->testshow($testid);
             }
             else {
-                $student_answer->answer = $answer;
+                //kontrola konfigurace
+                if($test->configuration == 1) {
+                    $student_answer->answer = $answer;
+                }
+                elseif ($test->configuration == 2){
+                    $student_answer->answer = $answer;
+                }
+                else{
+                    $student_answer->answer = implode(' ', $answer);
+                }
             }
             $student_answer->save();
 

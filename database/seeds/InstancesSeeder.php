@@ -46,19 +46,19 @@ class InstancesSeeder extends Seeder
         DB::table('student_answers')->insert([
             'question_id'=> 6,
             'test_instance_id' => 2,
-            'answer' => "bla bla",
+            'answer' => "9 12",
         ]);
 
         DB::table('student_answers')->insert([
             'question_id'=> 7,
             'test_instance_id' => 2,
-            'answer' => "bla",
+            'answer' => "10",
         ]);
 
         DB::table('student_answers')->insert([
             'question_id'=> 8,
             'test_instance_id' => 2,
-            'answer' => "bla",
+            'answer' => "",
         ]);
     }
 }
