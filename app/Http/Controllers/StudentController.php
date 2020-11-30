@@ -100,9 +100,41 @@ class StudentController extends Controller
 
     public function showresult($instanceid)
     {
-        $testinstances = auth()->user()->test_instances;
+        $testinstance = auth()->user()->test_instances->where('id', '=', $instanceid)->first();
+        if($testinstance === null){
+            return redirect('student/eval');
+        }
 
-        return view('student.eval', ['tests' => $testinstances]);
+        // kontrola přístupnosti testu
+        if($testinstance->test->end > date("Y-m-d H:i:s", time())){
+            return redirect('student/eval');
+        }
+
+
+        if(!$testinstance->approved){
+            return redirect('student/eval');
+        }
+
+        $student_answers = $testinstance->student_answers;
+        $answers = null;
+        $scores = null;
+        $templates = null;
+        foreach ($student_answers as $answer){
+            $answers[$answer->question_id] = $answer->answer;
+            $scores[$answer->question_id] = $answer->score;
+            if($testinstance->test->configuration != 3) {
+                $templates[$answer->question_id] = Answer::All()->where('question_id', '=', $answer->question_id)->where('true', '=', true)->first();
+            }
+            else{
+                $templates[$answer->question_id] = Answer::All()->where('question_id', '=', $answer->question_id)->where('true', '=', true);
+            }
+            if($templates[$answer->question_id] === null){
+                $templates[$answer->question_id] = "";
+            }
+        }
+
+
+        return view('student.showresult', ['instance' => $testinstance, 'questions' => $testinstance->test->questions, 'answers' => $answers, 'scores' => $scores, 'templates'=>$templates]);;
     }
 
 
