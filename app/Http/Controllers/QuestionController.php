@@ -6,6 +6,9 @@ use App\Question;
 use App\Answer;
 use App\Test;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class QuestionController extends Controller
 {
@@ -23,6 +26,7 @@ class QuestionController extends Controller
             'name' => $data['name'],
             'task' => $data['task'],
             'scoreMax' => $data['scoreMax'],
+            'imagePath' => $data['imagePath'],
         ]);
 
         return $qst;
@@ -77,22 +81,43 @@ class QuestionController extends Controller
         return view('profesor.modifyqst', ['qst'=>$qst]);
     }
 
+    protected function uploadOne(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
+        {
+            $name = !is_null($filename) ? $filename : Str::random(25);
+
+            $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
+
+            return $file;
+        }
+
     public function add($id ,Request $request)
     {
            $data = request()->validate([
                 'name' => 'required',
                 'task' => 'required',
                 'scoreMax' => 'required',
-                'answer' => 'required'
+                'answer' => 'required',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
            ]);
 
            $test = Test::findOrFail($id);
-
            $qst = new Question;
+           $qst->imagePath = "";
+            if($request->has('image')){
+                $image = $request->file('image');
+
+                $name = $request->name.'_'.time();
+
+                $folder = 'images/';
+                $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+                $this->uploadOne($image, $folder, 'public', $name);
+                $qst->imagePath = $filePath;
+            }
            $qst->test_id = $test->id;
            $qst->name = $request->name;
            $qst->task = $request->task;
            $qst->scoreMax = $request->scoreMax;
+
            $qstTmp = $this->createQ($qst);
 
 
@@ -101,7 +126,7 @@ class QuestionController extends Controller
                 case 1:
                    $ans = new Answer;
                    $ans->question_id = $qstTmp->id;
-                   $ans->answer = $request->answer;
+                   $ans->answer = $request->answer[0];
                    $ans->true = 1;
                    $this->createA($ans);
                     break;

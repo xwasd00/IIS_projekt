@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div> {{--Vytvaření testů--}}
-                            <form class="form-horizontal" method="POST" action="{{ route('profesor.addToDB', [$test->id])}}">
+                            <form class="form-horizontal" method="POST" action="{{ route('profesor.addToDB', [$test->id])}}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
                                 <h4>Otázky</h4>
@@ -52,7 +52,18 @@
                                     </div>
                                 </div>
 
-                                <h4>Odpovědi {{$validity}}</h4>
+                                <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                                    <div class="col-md-6">
+                                        <input type="file" name="image" placeholder="Choose image" id="image">
+                                        @if ($errors->has('image'))
+                                            <span class="help-block">
+                                            <strong>{{ $errors->first('image') }}</strong>
+                                        </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <h4>Odpovědi</h4>
 
                                 @if($counter == 3)
                                  <h5>Správná</h5>

@@ -34,7 +34,7 @@ class Question extends Model
 
 
     protected $fillable = [
-        'test_id', 'name', 'task', 'scoreMax',
+        'test_id', 'name', 'task', 'scoreMax', 'imageName', 'imagePath',
     ];
     public function test(){
         return $this->belongsTo(Test::class);

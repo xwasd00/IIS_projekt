@@ -18,7 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->unsignedBigInteger('test_id');
             $table->string('name');
             $table->text('task');
-            $table->string('image')->nullable();
+            $table->string('imagePath')->nullable();
             $table->integer('scoreMax');
             $table->index('test_id');
             $table->timestamps();
