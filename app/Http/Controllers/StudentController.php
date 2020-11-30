@@ -203,7 +203,23 @@ class StudentController extends Controller
 
     public function profile()
     {
-        $user = User::findOrFail(auth()->user()->id);
-        return view('student.profile', ['user' => $user]);
+        return view('student.profile', ['user' => auth()->user(), 'edit' => false]);
+    }
+
+    public function profileedit()
+    {
+        return view('student.profile', ['user' => auth()->user(), 'edit' => true]);
+    }
+
+    public function profilesave(Request $request)
+    {
+
+        $data = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+
+        auth()->user()->name = $data['name'];
+        auth()->user()->save();
+        return view('student.profile', ['user' => auth()->user(), 'edit' => false]);
     }
 }

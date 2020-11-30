@@ -12,9 +12,9 @@
                         <button class="btn btn-primary" onclick="window.location='<?php echo e(route('register')); ?>'">Přidat</button>
                         <table class="table table-hover">
                             <thead>
-                            <th>Username</th>
+                            <th>Jméno</th>
                             <th>Email</th>
-                            <th>Privileges [admin][profesor][asistant]</th>
+                            <th>Role</th>
                             </thead>
                             <tbody>
 
@@ -22,9 +22,15 @@
                                 <tr>
                                     <td><?php echo e($user->name); ?> </td>
                                     <td><?php echo e($user->email); ?> </td>
-                                    <td>[<?php echo e($user->admin); ?>]
-                                    [<?php echo e($user->profesor); ?>]
-                                    [<?php echo e($user->asistent); ?>]</td>
+                                    <td><?php if($user->admin): ?>
+                                            Admin
+                                        <?php elseif($user->profesor): ?>
+                                            Profesor
+                                        <?php elseif($user->asistent): ?>
+                                            Asistent
+                                        <?php else: ?>
+                                            Student
+                                        <?php endif; ?></td>
                                     <td>
                                         <?php if(!$user->admin): ?>
                                         <form action="<?php echo e(url('user/delete', [$user->id])); ?>" method="POST">
