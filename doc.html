@@ -27,7 +27,7 @@
 		Tvorba layoutu, stránky Profesora a tvorby testù
 	</dd>
 	<dt>URL aplikace</dt>
-	<dd><a href="https://www.stud.fit.vutbr.cz/~xsovam00/IIS/">http://www.stud.fit.vutbr.cz/~xautor01/IIS</a></dd>
+	<dd><a href="https://www.stud.fit.vutbr.cz/~xsovam00/IIS/">http://www.stud.fit.vutbr.cz/~xsovam00/IIS</a></dd>
 </dl>
 
 <h2>U¾ivatelé systému pro testování</h2>
@@ -57,13 +57,52 @@ ketré mají pøístup k IS.</p>
 Zde vlo¾te grafické schéma relaèní databáze (tabulek v databázi).
 
 <h2>Instalace</h2>
-
-Struènì popi¹te: 
+<h3>Softwarove pozadavky</h3>
 <ul>
-<li>postup instalace na server,</li>
-<li>softwarové po¾adavky (verze PHP apod.),</li>
-<li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
+<li>PHP >= 7.0.0</li>
+<li>OpenSSL PHP Extension</li>
+<li>PDO PHP Extension</li>
+<li>Mbstring PHP Extension</li>
+<li>Tokenizer PHP Extension</li>
+<li>XML PHP Extension</li>
 </ul>
+
+<h3>Instalace</h3>
+
+Nainstalovat laravel(5.5.50): <a href="https://laravel.com/docs/5.5/installation">https://laravel.com/docs/5.5/installation</a><br>
+vygenerování klíce: php artisan key:generate<br>
+autentizace: php artisan make:auth<br>
+prekopírování projektových souboru<br>
+vytvorení symlinku k ulozisti(pro obrázky): php artisan storage:link<br>
+zkopírování obsahu public/ adresáre do verejne prístupného adresáre(WWW/)<br>
+úprava souboru index.php ve verejném adresári (WWW/)(<a href="https://medium.com/laravel-news/the-simple-guide-to-deploy-laravel-5-application-on-shared-hosting-1a8d0aee923e">zjisteno zde</a>)<br>
+Zmenou:<br>
+require __DIR__.'/../bootstrap/autoload.php';<br>
+$app = require_once __DIR__.'/../bootstrap/app.php';<br>
+Na:<br>
+require __DIR__.'/../project/bootstrap/autoload.php';<br>
+$app = require_once __DIR__.'/../project/bootstrap/app.php';<br>
+kde project je název projektu (v tomto prípade je verejný adresár a adresár projektu na stejné úrovni)<br><br>
+Nastavení .env<br>
+APP_ENV=production<br>
+APP_DEBUG=false<br>
+<br>
+Konfigurace databáze
+
+
+<h3>Konfigurace databáze</h3>
+Nastavení .env:<br>
+DB_CONNECTION=mysql<br>
+DB_HOST= host databáze<br>
+DB_PORT= port, na kterém databáze bezí<br>
+DB_DATABASE= jméno databáze<br>
+DB_USERNAME= prihlasovací jméno<br> 
+DB_PASSWORD= heslo<br>
+<br>
+
+vytvorení tabulek(prípadné shození starých) a naplnení daty: php artisan migrate:fresh --seed
+
+
 
 <h2>Známé problémy</h2>
 <p>Zde popi¹te, které body zadání nejsou implementovány a z jakého dùvodu. Napø. &#8222;Z èasových dùvodù nebyla implementována správa u¾ivatelù.&#8221; Pomù¾ete tím zrychlit hodnocení, kdy¾ neimplementované funkce nebudeme muset dlouze hledat.</p>
