@@ -52,6 +52,8 @@
                                     </div>
                                 </div>
 
+                                <h4>Obrázek</h4>
+
                                 <div class="form-group">
                                     <div class="col-md-6">
                                         <input type="file" name="image" placeholder="Choose image" id="image">
