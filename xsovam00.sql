@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `answers` (
 
 INSERT INTO `answers` (`id`, `question_id`, `answer`, `true`, `created_at`, `updated_at`) VALUES
 (1, 1, 'true', 1, NULL, NULL),
-(2, 2, 'false', 1, NULL, NULL),
+(2, 2, 'false', 0, NULL, NULL),
 (3, 3, 'true', 1, NULL, NULL),
 (4, 4, 'true', 1, NULL, NULL),
 (5, 5, 'true', 1, NULL, NULL),
