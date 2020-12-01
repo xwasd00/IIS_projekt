@@ -16,7 +16,7 @@
                         <table class="table table-hover">
                             <tbody>
                             <tr>
-                                <td>Name: </td>
+                                <td>Jméno: </td>
                                 <td>@if($edit)
                                         <form class="form-horizontal" method="POST" action="">
                                             {{ csrf_field() }}

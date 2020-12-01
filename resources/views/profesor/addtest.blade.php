@@ -10,7 +10,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <p> Profesor page fo adding Tests</p>
+                        <p>Vytvaření testů</p>
                         <div> {{--Vytvaření testů--}}
                             <form class="form-horizontal" method="POST" action="{{ route('profesor.add')}}">
                                 {{ csrf_field() }}

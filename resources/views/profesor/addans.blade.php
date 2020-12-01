@@ -10,7 +10,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <p> Add answer</p>
+                        <p> Přidat odpověď</p>
                         <form class="form-horizontal" method="POST" action="{{ route('profesor.addAnsDB', [$qst->id])}}">
                         {{ csrf_field() }}
                         <table class="table table-hover">
