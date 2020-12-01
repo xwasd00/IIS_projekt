@@ -14,10 +14,10 @@
 Auth::routes();
 
 
-Route::get('/', function () {return view('index');})
+Route::get('/', 'IndexController@index')
     -> name('index');
 
-Route::get('index', function () {return view('index');})
+Route::get('index', 'IndexController@index')
     -> name('index');
 
 

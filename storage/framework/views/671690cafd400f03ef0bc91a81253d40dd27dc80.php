@@ -4,7 +4,6 @@
 
 
 <?php $__env->startSection('content'); ?>
-    <div id="welcome-text">Zde bude úvodní text</div>
     <button class="btn btn-primary" onclick="window.location='<?php echo e(route('student')); ?>'">Přihlásit se jako student</button>
     <button class="btn btn-primary" onclick="window.location='<?php echo e(route('asistent')); ?>'">Přihlásit se jako asistent</button>
     <button class="btn btn-primary" onclick="window.location='<?php echo e(route('profesor')); ?>'">Přihlásit se jako Profesor</button>

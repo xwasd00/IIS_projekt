@@ -25,7 +25,7 @@
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="sr-only">Přepnout navigaci</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -53,7 +53,7 @@
                                         <a href="<?php echo e(route('logout')); ?>"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Odhlásit
                                         </a>
 
                                         <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
